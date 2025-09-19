@@ -1,1 +1,28 @@
 @import 'tailwindcss';
+
+@font-face {
+	font-family: 'overmind';
+	src: url('/fonts/overmind.ttf') format('truetype');
+}
+
+@theme {
+	--color-primary: 34, 197, 94; /* Green */
+	--color-secondary: 59, 130, 246; /* Blue */
+	--color-background: 255, 255, 255; /* White */
+
+	--font-title: overmind, sans-serif;
+}
+
+/* Add global transition for elements using theme colors */
+* {
+	transition-property: background-color, color, border-color, fill, stroke;
+	transition-duration: 1000ms;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: rgb(var(--color-background));
+	color: rgb(var(--color-primary));
+}
