@@ -3,7 +3,7 @@
 </script>
 
 <nav
-	class="fixed right-[20%] left-[20%] h-16"
+	class="fixed right-[20%] left-[20%] h-16 z-50"
 	style="top: {scrollY > 100 ? '2.5rem' : '-2.5rem'}; transition: top 0.5s ease-in-out;"
 >
 	<div

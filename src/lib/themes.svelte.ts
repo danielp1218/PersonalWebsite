@@ -10,6 +10,7 @@ export const themes: { [key: string]: Theme } = {
 		[75, 85, 99], // Darker Cool Gray
 		[156, 163, 175], // Light Gray
 		[255, 255, 255] // Pure White
+		
 	],
 	dark: [
 		[255, 105, 180], // Pink

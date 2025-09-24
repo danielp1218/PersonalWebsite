@@ -1,23 +1,30 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 
 	let live2DCanvas: HTMLCanvasElement | null;
+	let lappDelegate: any = null;
 
 	onMount(async () => {
-		console.log('onmount live2D');
-
-		if (window && live2DCanvas) {
-			live2DCanvas.width = window.innerWidth;
+		const { Live2DCubismCore } = await import('$lib/live2d/Core/live2dcubismcore.min.js');
+		
+		(globalThis as any).Live2DCubismCore = Live2DCubismCore;
+		
+		const { LAppDelegate } = await import('$lib/live2d/utils/lappdelegate');
+		lappDelegate = LAppDelegate;
+		
+		const delegate = LAppDelegate.getInstance();
+		if (delegate.initialize()) {
+			delegate.run();
 		}
-		if (!window.Live2D) {
-			await import('$lib/util/live2d/live2d_bundle.js' as any);
-		}
+	});
 
-		await import('$lib/util/live2d/initModel.js' as any);
+	onDestroy(() => {
+		// clean after use
+		if (lappDelegate) {
+			lappDelegate.releaseInstance();
+		}
 	});
 </script>
 
-<div id="model-container">
-	<canvas id="live2d2" height="300" width="600"></canvas>
-	<canvas bind:this={live2DCanvas} id="live2d4" height="1000" width="700"></canvas>
-</div>
+<canvas bind:this={live2DCanvas} id="live2d4" class="absolute bg-transparent left-0 top-0 z-10"></canvas>
+

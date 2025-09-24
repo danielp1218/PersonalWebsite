@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 
 @font-face {
-	font-family: 'overmind';
-	src: url('/fonts/overmind.ttf') format('truetype');
+	font-family: 'poppins';
+	src: url('/fonts/Poppins-Regular.ttf') format('truetype');
 }
 
 @theme {
@@ -10,7 +10,7 @@
 	--color-secondary: 59, 130, 246; /* Blue */
 	--color-background: 255, 255, 255; /* White */
 
-	--font-title: overmind, sans-serif;
+	--font-title: poppins, sans-serif;
 }
 
 /* Add global transition for elements using theme colors */

@@ -1,0 +1,2 @@
+add live2d models in this directory
+did not want my model in the repo

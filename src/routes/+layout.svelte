@@ -29,11 +29,9 @@
 
 <div
 	class="min-h-screen w-full"
-	style="--color-primary: {palette.getColour(0)}; --color-secondary: {palette.getColour(
-		1
-	)}; --color-background: {palette.getColour(2)}"
+	style="--color-primary: {palette.getColour(0)}; --color-secondary: {palette.getColour(1)}; --color-background: {palette.getColour(2)}"
 >
-	<div class="fixed top-4 right-4">
+	<div class="fixed top-4 right-4 z-50">
 		<ThemeButton onclick={toggleTheme} />
 	</div>
 	{@render children()}
