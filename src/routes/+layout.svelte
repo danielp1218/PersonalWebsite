@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import ThemeButton from '$lib/components/themeButton.svelte';
+	import Footer from '$lib/components/footer.svelte';
 	let { children } = $props();
 
 	import { ColourPalette } from '$lib/themes.svelte';
@@ -35,4 +36,5 @@
 		<ThemeButton onclick={toggleTheme} />
 	</div>
 	{@render children()}
+	<Footer />
 </div>
