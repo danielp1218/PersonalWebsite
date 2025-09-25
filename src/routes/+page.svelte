@@ -21,8 +21,24 @@
 				passionate about full-stack development, ai, and all things tech.
 			</p>
 		</div>
+	</div>
 
-		
+	<div id="projects" class="bg-background min-h-screen px-8 py-20">
+		<div class="mx-auto max-w-6xl">
+			<h2 class="text-secondary font-title mb-12 text-center text-6xl">projects</h2>
+			<p class="text-primary text-xl leading-relaxed text-center">
+				coming soon...
+			</p>
+		</div>
+	</div>
+
+	<div id="contact" class="bg-background min-h-screen px-8 py-20">
+		<div class="mx-auto max-w-6xl">
+			<h2 class="text-secondary font-title mb-12 text-center text-6xl">contact</h2>
+			<p class="text-primary text-xl leading-relaxed text-center">
+				get in touch with me!
+			</p>
+		</div>
 	</div>
 </div>
 

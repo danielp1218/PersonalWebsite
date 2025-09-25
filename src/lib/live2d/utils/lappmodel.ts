@@ -713,14 +713,19 @@ export class LAppModel extends CubismUserModel {
   public setExpression(expressionId: string): void {
     const motion: ACubismMotion = this._expressions.getValue(expressionId);
 
-    if (this._debugMode) {
+    if (this._debugMode || LAppDefine.DebugLogEnable) {
       LAppPal.printMessage(`[APP]expression: [${expressionId}]`);
+      LAppPal.printMessage(`[APP]expressions loaded: ${this._expressions.getSize()}`);
+      
     }
 
     if (motion != null) {
       this._expressionManager.startMotion(motion, false);
+      if (this._debugMode || LAppDefine.DebugLogEnable) {
+        LAppPal.printMessage(`[APP]expression [${expressionId}] started successfully`);
+      }
     } else {
-      if (this._debugMode) {
+      if (this._debugMode || LAppDefine.DebugLogEnable) {
         LAppPal.printMessage(`[APP]expression[${expressionId}] is null`);
       }
     }

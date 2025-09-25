@@ -72,6 +72,17 @@ export class LAppLive2DManager {
     }
   }
 
+  public setExpression(expressionName: string): void {
+    if (this._models.getSize() > 0) {
+      const model: LAppModel = this._models.at(0);
+      model.setExpression(expressionName);
+      
+      if (LAppDefine.DebugLogEnable) {
+        LAppPal.printMessage(`[APP]set expression: ${expressionName}`);
+      }
+    }
+  }
+
   /**
    * 画面を更新するときの処理
    * モデルの更新処理及び描画処理を行う
@@ -146,7 +157,7 @@ export class LAppLive2DManager {
    */
   public addModel(sceneIndex: number = 0): void {
     this._sceneIndex = sceneIndex;
-    this.changeScene(this._sceneIndex);
+    this.changeScene();
   }
 
   /**
@@ -157,6 +168,7 @@ export class LAppLive2DManager {
     this._viewMatrix = new CubismMatrix44();
     this._models = new csmVector<LAppModel>();
     this._sceneIndex = 0;
+    this._currentExpressionIndex = 0; // For cycling through expressions
   }
 
   /**
@@ -170,7 +182,7 @@ export class LAppLive2DManager {
    */
   public initialize(subdelegate: LAppSubdelegate): void {
     this._subdelegate = subdelegate;
-    this.changeScene(this._sceneIndex);
+    this.changeScene();
   }
 
   /**
@@ -181,6 +193,7 @@ export class LAppLive2DManager {
   _viewMatrix: CubismMatrix44; // モデル描画に用いるview行列
   _models: csmVector<LAppModel>; // モデルインスタンスのコンテナ
   private _sceneIndex: number; // 表示するシーンのインデックス値
+  private _currentExpressionIndex: number; // For cycling through expressions
 
   // モーション再生開始のコールバック関数
   beganMotion = (self: ACubismMotion): void => {

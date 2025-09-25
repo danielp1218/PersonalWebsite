@@ -85,6 +85,16 @@ export class LAppDelegate {
   }
 
   /**
+   * Get the Live2D Manager for manual control
+   */
+  public getLive2DManager(): any {
+    if (this._subdelegates.getSize() > 0) {
+      return this._subdelegates.at(0).getLive2DManager();
+    }
+    return null;
+  }
+
+  /**
    * 実行処理。
    */
   public run(): void {
