@@ -51,7 +51,7 @@ export class LAppDelegate {
       ite.preIncrement()
     ) {
       // Always follow mouse movement
-      ite.ptr().onPointMoved(e.pageX, e.pageY);
+      ite.ptr().onPointMoved(e.clientX, e.clientY);
     }
   }
 
@@ -206,7 +206,7 @@ export class LAppDelegate {
   }
 
   private initializeSubdelegates(): void {
-    let width: number = LAppDefine.CanvasWidth;
+    /*let width: number = LAppDefine.CanvasWidth;
     let height: number = LAppDefine.CanvasHeight;
     if (LAppDefine.CanvasNum > 3) {
       const widthunit: number = Math.ceil(Math.sqrt(LAppDefine.CanvasNum));
@@ -214,16 +214,16 @@ export class LAppDelegate {
       width = 100.0 / widthunit;
       height = 100.0 / heightUnit;
     } else {
-      width = 100.0 / LAppDefine.CanvasNum;
-    }
+      //width = 100.0 / LAppDefine.CanvasNum;
+    }*/
 
     this._canvases.prepareCapacity(LAppDefine.CanvasNum);
     this._subdelegates.prepareCapacity(LAppDefine.CanvasNum);
     for (let i = 0; i < LAppDefine.CanvasNum; i++) {
       const canvas = document.getElementById(`live2d4`) as HTMLCanvasElement;
       this._canvases.pushBack(canvas);
-      canvas.style.width = `${width}vw`;
-      canvas.style.height = `${height}vh`;
+      //canvas.style.width = `${width}vw`;
+      //canvas.style.height = `${height}vh`;
 
       //document.body.appendChild(canvas);
     }

@@ -196,28 +196,28 @@ export class LAppView {
 
   /**
    * タッチしているときにポインタが動いたら呼ばれる。
-   * (This is now handled by onMouseHover for continuous tracking)
+   * (This is now handled by onMouseMove for continuous tracking)
    *
    * @param pointX スクリーンX座標
    * @param pointY スクリーンY座標
    */
   public onTouchesMoved(pointX: number, pointY: number): void {
-    // This method is kept for compatibility but mouse tracking is now handled by onMouseHover
+    // This method is kept for compatibility but mouse tracking is now handled by onMouseMove
     // which provides smoother continuous tracking without click dependency
     const posX = pointX * window.devicePixelRatio;
     const posY = pointY * window.devicePixelRatio;
 
     this._touchManager.touchesMoved(posX, posY);
-    // The actual model tracking is now done in onMouseHover
+    // The actual model tracking is now done in onMouseMove
   }
 
   /**
-   * マウスホバー時にポインタが動いたら呼ばれる（クリック不要）。
+   * マウスが動いたときに呼ばれる。
    *
    * @param pointX スクリーンX座標
    * @param pointY スクリーンY座標
    */
-  public onMouseHover(pointX: number, pointY: number): void {
+  public onMouseMove(pointX: number, pointY: number): void {
     if (!LAppDefine.MouseTrackingEnable) {
       return;
     }

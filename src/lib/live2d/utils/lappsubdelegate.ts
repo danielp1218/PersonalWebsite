@@ -273,17 +273,13 @@ export class LAppSubdelegate {
     const localX: number = pageX - this._canvas.offsetLeft;
     const localY: number = pageY - this._canvas.offsetTop;
 
-    // Only track mouse if it's within canvas bounds
-    if (localX >= 0 && localX <= this._canvas.width && 
-        localY >= 0 && localY <= this._canvas.height) {
-      this._view.onMouseHover(localX, localY);
-    }
+    this._view.onMouseMove(localX, localY);
   }
 
   /**
-   * マウスホバー時にポインタが動いたら呼ばれる（クリック不要）。
+   * マウスが動いたときに呼ばれる。
    */
-  public onMouseHover(pageX: number, pageY: number): void {
+  public onMouseMove(pageX: number, pageY: number): void {
     // This method is now redundant since onPointMoved handles everything
     this.onPointMoved(pageX, pageY);
   }

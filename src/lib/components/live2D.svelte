@@ -37,6 +37,6 @@
 
 </script>
 
-<canvas bind:this={live2DCanvas} id="live2d4" class="absolute bg-transparent left-0 top-0 z-10"></canvas>
+<canvas {...$$restProps} bind:this={live2DCanvas} id="live2d4" style="width: 50vw; height: 70vh"></canvas>
 
 

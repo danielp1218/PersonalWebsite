@@ -4,12 +4,12 @@ import { LogLevel } from '$lib/live2d/Framework/src/live2dcubismframework';
 
 export const CanvasSize: { width: number; height: number } | 'auto' = 'auto';
 
-export const CanvasWidth = 100; // in vw when CanvasSize is 'auto'
-export const CanvasHeight = 80; // in vh when CanvasSize is 'auto'
+//export const CanvasWidth = 50; // in vw when CanvasSize is 'auto'
+//export const CanvasHeight = 70; // in vh when CanvasSize is 'auto'
 
 export const CanvasNum = 1;
 
-export const ViewScale = 0.8;
+export const ViewScale = 1;
 export const ViewMaxScale = 2.0;
 export const ViewMinScale = 0.8;
 
