@@ -254,8 +254,8 @@ export class LAppSubdelegate {
     }
     this._captured = true;
 
-    const localX: number = pageX - this._canvas.offsetLeft;
-    const localY: number = pageY - this._canvas.offsetTop;
+    const localX: number = pageX - this._canvas.offsetLeft - this._canvas.clientLeft;
+    const localY: number = pageY - this._canvas.offsetTop - this._canvas.clientTop;
 
     // Only call tap behavior, not the drag tracking since that's handled by onPointMoved
     this._view.onTouchesBegan(localX, localY);

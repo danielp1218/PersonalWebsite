@@ -37,6 +37,13 @@
 
 </script>
 
-<canvas {...$$restProps} bind:this={live2DCanvas} id="live2d4" style="width: 50vw; height: 70vh"></canvas>
+<canvas
+	{...$$restProps}
+	bind:this={live2DCanvas}
+	id="live2d4"
+	class="h-[50vh] md:h-[65vh] w-full md:w-[40vw]"
+	style="filter: var(--filter-settings);"
+></canvas>
+
 
 

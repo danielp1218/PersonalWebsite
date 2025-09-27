@@ -37,7 +37,7 @@ export class LAppDelegate {
       ite.notEqual(this._subdelegates.end());
       ite.preIncrement()
     ) {
-      ite.ptr().onPointBegan(e.pageX, e.pageY);
+      ite.ptr().onPointBegan(e.clientX, e.clientY);
     }
   }
 
@@ -61,7 +61,7 @@ export class LAppDelegate {
       ite.notEqual(this._subdelegates.end());
       ite.preIncrement()
     ) {
-      ite.ptr().onPointEnded(e.pageX, e.pageY);
+      ite.ptr().onPointEnded(e.clientX, e.clientY);
     }
   }
 
@@ -71,7 +71,7 @@ export class LAppDelegate {
       ite.notEqual(this._subdelegates.end());
       ite.preIncrement()
     ) {
-      ite.ptr().onTouchCancel(e.pageX, e.pageY);
+      ite.ptr().onTouchCancel(e.clientX, e.clientY);
     }
   }
 

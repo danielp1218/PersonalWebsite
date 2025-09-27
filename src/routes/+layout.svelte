@@ -1,7 +1,6 @@
 <script lang="ts">
 	import '../app.css';
 	import ThemeButton from '$lib/components/themeButton.svelte';
-	import Footer from '$lib/components/contacts.svelte';
 	let { children } = $props();
 
 	import { ColourPalette } from '$lib/themes.svelte';
@@ -30,7 +29,7 @@
 
 <div
 	class="min-h-screen h-full w-full bg-background"
-	style="--color-primary: {palette.getColour(0)}; --color-secondary: {palette.getColour(1)}; --color-background: {palette.getColour(2)}"
+	style="--color-primary: {palette.getColour(0)}; --color-secondary: {palette.getColour(1)}; --color-background: {palette.getColour(2)}; --filter-settings: {palette.getFilter()};"
 >
 	<div class="fixed top-4 right-4 z-50">
 		<ThemeButton onclick={toggleTheme} />
