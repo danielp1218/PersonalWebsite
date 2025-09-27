@@ -1,0 +1,61 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "Daniel.moc3",
+		"Textures": [
+			"Daniel.2048/texture_00.png"
+		],
+		"Physics": "Daniel.physics3.json",
+		"DisplayInfo": "Daniel.cdi3.json",
+		"Expressions": [
+			{
+				"Name": "Happy",
+				"File": "Expressions/Happy.exp3.json"
+			},
+			{
+				"Name": "Normal",
+				"File": "Expressions/Normal.exp3.json"
+			},
+			{
+				"Name": "peeking",
+				"File": "Expressions/peeking.exp3.json"
+			},
+			{
+				"Name": "sad",
+				"File": "Expressions/sad.exp3.json"
+			},
+			{
+				"Name": "Smug",
+				"File": "Expressions/Smug.exp3.json"
+			},
+			{
+				"Name": "what",
+				"File": "Expressions/what.exp3.json"
+			}
+		]
+	},
+	"HitAreas": [
+		{
+			"Name": "Head",
+			"Id": "HitArea"
+		},
+		{
+			"Name": "Body", 
+			"Id": "HitArea"
+		}
+	],
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen"
+			]
+		}
+	]
+}
