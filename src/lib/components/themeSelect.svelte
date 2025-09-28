@@ -21,4 +21,5 @@
 		>
 		</button>
 	{/each}
+	<h6 class="cursor-vertical-text [writing-mode:vertical-lr] text-2xl align-middle rotate-180">{themeStore.name}</h6>
 </div>
