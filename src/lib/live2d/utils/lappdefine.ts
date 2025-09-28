@@ -1,5 +1,6 @@
 // definitions file
 
+import { dev } from '$app/environment';
 import { LogLevel } from '$lib/live2d/Framework/src/live2dcubismframework';
 
 export const CanvasSize: { width: number; height: number } | 'auto' = 'auto';
@@ -38,17 +39,14 @@ export const PriorityIdle = 1;
 export const PriorityNormal = 2;
 export const PriorityForce = 3;
 
-export const MOCConsistencyValidationEnable = true;
-export const MotionConsistencyValidationEnable = true;
+export const MOCConsistencyValidationEnable = dev;
+export const MotionConsistencyValidationEnable = dev;
 
-export const DebugLogEnable = true;
-export const DebugTouchLogEnable = false;
+export const DebugLogEnable = dev;
+export const DebugTouchLogEnable = dev;
 
 // Mouse tracking settings
 export const MouseTrackingEnable = true;
 export const MouseTrackingSensitivity = 1.0; // Multiplier for mouse tracking response
 
-export const CubismLoggingLevel: LogLevel = LogLevel.LogLevel_Verbose;
-
-export const RenderTargetWidth = 1900;
-export const RenderTargetHeight = 1000;
+export const CubismLoggingLevel: LogLevel = dev ? LogLevel.LogLevel_Verbose : LogLevel.LogLevel_Off;

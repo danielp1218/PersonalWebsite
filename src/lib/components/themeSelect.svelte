@@ -10,7 +10,7 @@
 </script>
 
 <div class="flex flex-row gap-4 md:flex-col">
-	{#each Object.entries(themePrimaries) as [themeName, colour]}
+	{#each Object.entries(themePrimaries) as [themeName, colour] (themeName)}
 		<button
 			onclick={() => themeStore.setTheme(themeName)}
 			aria-label="Change Theme to {themeName}"

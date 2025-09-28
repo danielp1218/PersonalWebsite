@@ -24,9 +24,10 @@ export default ts.config(
 		}
 	},
 	{
+		ignores: ['**/..*', '**/build', '**/dist', 'src/lib/live2d/**', 'static/**']
+	},
+	{
 		files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
-		ignores: ['eslint.config.js', 'svelte.config.js'],
-
 		languageOptions: {
 			parserOptions: {
 				projectService: true,

@@ -8,7 +8,7 @@
 	onMount(async () => {
 		const { Live2DCubismCore } = await import('$lib/live2d/Core/live2dcubismcore.min.js');
 
-		(globalThis as any).Live2DCubismCore = Live2DCubismCore;
+		globalThis.Live2DCubismCore = Live2DCubismCore;
 
 		const { LAppDelegate } = await import('$lib/live2d/utils/lappdelegate');
 		lappDelegate = LAppDelegate;
