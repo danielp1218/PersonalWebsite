@@ -29,7 +29,7 @@
 		in:fade={{ delay: 250, duration: 500 }}
 		class="text-primary min-h-screen w-full bg-gray-400/10 md:pl-16 md:ml-[40%] md:w-[60%]"
 	>
-		<div class="absolute md:fixed top-0 right-0 md:left-[40%] z-50 m-4">
+		<div class="absolute md:fixed top-0 right-0 md:left-[40%] z-50 m-4 md:w-10">
 			<ThemeSelect />
 		</div>
 		<div class="border-background border-l-4 md:p-8">
@@ -75,8 +75,8 @@
 						tech.
 					</li>
 					<li class="mb-2 text-xl leading-relaxed">
-						In my free time, you can find me playing <strong>badminton</strong>, working on
-						<strong>cool projects</strong>, or listening to <strong>music</strong>.
+						In my free time, you can find me playing badminton, working on
+						cool projects, or listening to music!
 					</li>
 				</ul>
 			</ContentSection>

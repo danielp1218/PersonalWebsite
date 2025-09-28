@@ -13,15 +13,14 @@
 
 {#if $loading}
 	<Loading />
-{:else}
-	<div
-		in:fade
-		class="bg-background h-full min-h-screen w-full"
-		style="--color-primary: {getColour(themeStore.palette[0])}; 
-		--color-secondary: {getColour(themeStore.palette[1])};
-		--color-background: {getColour(themeStore.palette[2])}; 
-		--filter-settings: {themeStore.filter};"
-	>
-		{@render children()}
-	</div>
 {/if}
+<div
+	in:fade
+	class="bg-background h-full min-h-screen w-full"
+	style="--color-primary: {getColour(themeStore.palette[0])}; 
+	--color-secondary: {getColour(themeStore.palette[1])};
+	--color-background: {getColour(themeStore.palette[2])}; 
+	--filter-settings: {themeStore.filter};"
+>
+	{@render children()}
+</div>
