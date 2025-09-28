@@ -19,190 +19,188 @@ import { LAppSubdelegate } from './lappsubdelegate';
  * モデル生成と破棄、タップイベントの処理、モデル切り替えを行う。
  */
 export class LAppLive2DManager {
-  /**
-   * 現在のシーンで保持しているすべてのモデルを解放する
-   */
-  private releaseAllModel(): void {
-    this._models.clear();
-  }
+	/**
+	 * 現在のシーンで保持しているすべてのモデルを解放する
+	 */
+	private releaseAllModel(): void {
+		this._models.clear();
+	}
 
-  /**
-   * 画面をドラッグした時の処理
-   *
-   * @param x 画面のX座標
-   * @param y 画面のY座標
-   */
-  public onDrag(x: number, y: number): void {
-    const model: LAppModel = this._models.at(0);
-    if (model) {
-      model.setDragging(x, y);
-    }
-  }
+	/**
+	 * 画面をドラッグした時の処理
+	 *
+	 * @param x 画面のX座標
+	 * @param y 画面のY座標
+	 */
+	public onDrag(x: number, y: number): void {
+		const model: LAppModel = this._models.at(0);
+		if (model) {
+			model.setDragging(x, y);
+		}
+	}
 
-  /**
-   * 画面をタップした時の処理
-   *
-   * @param x 画面のX座標
-   * @param y 画面のY座標
-   */
-  public onTap(x: number, y: number): void {
-    if (LAppDefine.DebugLogEnable) {
-      LAppPal.printMessage(
-        `[APP]tap point: {x: ${x.toFixed(2)} y: ${y.toFixed(2)}}`
-      );
-    }
+	/**
+	 * 画面をタップした時の処理
+	 *
+	 * @param x 画面のX座標
+	 * @param y 画面のY座標
+	 */
+	public onTap(x: number, y: number): void {
+		if (LAppDefine.DebugLogEnable) {
+			LAppPal.printMessage(`[APP]tap point: {x: ${x.toFixed(2)} y: ${y.toFixed(2)}}`);
+		}
 
-    const model: LAppModel = this._models.at(0);
+		const model: LAppModel = this._models.at(0);
 
-    if (model.hitTest(LAppDefine.HitAreaNameHead, x, y)) {
-      if (LAppDefine.DebugLogEnable) {
-        LAppPal.printMessage(`[APP]hit area: [${LAppDefine.HitAreaNameHead}]`);
-      }
-      model.setRandomExpression();
-    } else if (model.hitTest(LAppDefine.HitAreaNameBody, x, y)) {
-      if (LAppDefine.DebugLogEnable) {
-        LAppPal.printMessage(`[APP]hit area: [${LAppDefine.HitAreaNameBody}]`);
-      }
-      model.startRandomMotion(
-        LAppDefine.MotionGroupTapBody,
-        LAppDefine.PriorityNormal,
-        this.finishedMotion,
-        this.beganMotion
-      );
-    }
-  }
+		if (model.hitTest(LAppDefine.HitAreaNameHead, x, y)) {
+			if (LAppDefine.DebugLogEnable) {
+				LAppPal.printMessage(`[APP]hit area: [${LAppDefine.HitAreaNameHead}]`);
+			}
+			model.setRandomExpression();
+		} else if (model.hitTest(LAppDefine.HitAreaNameBody, x, y)) {
+			if (LAppDefine.DebugLogEnable) {
+				LAppPal.printMessage(`[APP]hit area: [${LAppDefine.HitAreaNameBody}]`);
+			}
+			model.startRandomMotion(
+				LAppDefine.MotionGroupTapBody,
+				LAppDefine.PriorityNormal,
+				this.finishedMotion,
+				this.beganMotion
+			);
+		}
+	}
 
-  public setExpression(expressionName: string): void {
-    if (this._models.getSize() > 0) {
-      const model: LAppModel = this._models.at(0);
-      model.setExpression(expressionName);
-      
-      if (LAppDefine.DebugLogEnable) {
-        LAppPal.printMessage(`[APP]set expression: ${expressionName}`);
-      }
-    }
-  }
+	public setExpression(expressionName: string): void {
+		if (this._models.getSize() > 0) {
+			const model: LAppModel = this._models.at(0);
+			model.setExpression(expressionName);
 
-  /**
-   * 画面を更新するときの処理
-   * モデルの更新処理及び描画処理を行う
-   */
-  public onUpdate(): void {
-    const { width, height } = this._subdelegate.getCanvas();
+			if (LAppDefine.DebugLogEnable) {
+				LAppPal.printMessage(`[APP]set expression: ${expressionName}`);
+			}
+		}
+	}
 
-    const projection: CubismMatrix44 = new CubismMatrix44();
-    const model: LAppModel = this._models.at(0);
+	/**
+	 * 画面を更新するときの処理
+	 * モデルの更新処理及び描画処理を行う
+	 */
+	public onUpdate(): void {
+		const { width, height } = this._subdelegate.getCanvas();
 
-    if (model.getModel()) {
-      if (model.getModel().getCanvasWidth() > 1.0 && width < height) {
-        // 横に長いモデルを縦長ウィンドウに表示する際モデルの横サイズでscaleを算出する
-        model.getModelMatrix().setWidth(2.0);
-        projection.scale(1.0, width / height);
-      } else {
-        projection.scale(height / width, 1.0);
-      }
+		const projection: CubismMatrix44 = new CubismMatrix44();
+		const model: LAppModel = this._models.at(0);
 
-      // 必要があればここで乗算
-      if (this._viewMatrix != null) {
-        projection.multiplyByMatrix(this._viewMatrix);
-      }
-    }
+		if (model.getModel()) {
+			if (model.getModel().getCanvasWidth() > 1.0 && width < height) {
+				// 横に長いモデルを縦長ウィンドウに表示する際モデルの横サイズでscaleを算出する
+				model.getModelMatrix().setWidth(2.0);
+				projection.scale(1.0, width / height);
+			} else {
+				projection.scale(height / width, 1.0);
+			}
 
-    model.update();
-    model.draw(projection); // 参照渡しなのでprojectionは変質する。
-  }
+			// 必要があればここで乗算
+			if (this._viewMatrix != null) {
+				projection.multiplyByMatrix(this._viewMatrix);
+			}
+		}
 
-  /**
-   * 次のシーンに切りかえる
-   * サンプルアプリケーションではモデルセットの切り替えを行う。
-   */
-  public nextScene(): void {
-    this.changeScene();
-  }
+		model.update();
+		model.draw(projection); // 参照渡しなのでprojectionは変質する。
+	}
 
-  /**
-   * シーンを切り替える
-   * サンプルアプリケーションではモデルセットの切り替えを行う。
-   * @param index
-   */
-  private changeScene(): void {
-    this._sceneIndex = 0;
+	/**
+	 * 次のシーンに切りかえる
+	 * サンプルアプリケーションではモデルセットの切り替えを行う。
+	 */
+	public nextScene(): void {
+		this.changeScene();
+	}
 
-    if (LAppDefine.DebugLogEnable) {
-      LAppPal.printMessage(`[APP]model index: ${this._sceneIndex}`);
-    }
+	/**
+	 * シーンを切り替える
+	 * サンプルアプリケーションではモデルセットの切り替えを行う。
+	 * @param index
+	 */
+	private changeScene(): void {
+		this._sceneIndex = 0;
 
-    // ModelDir[]に保持したディレクトリ名から
-    // model3.jsonのパスを決定する。
-    // ディレクトリ名とmodel3.jsonの名前を一致させておくこと。
-    const model: string = LAppDefine.ModelDir;
-    const modelPath: string = LAppDefine.ResourcesPath + model + '/';
-    let modelJsonName: string = model + '.model3.json';
+		if (LAppDefine.DebugLogEnable) {
+			LAppPal.printMessage(`[APP]model index: ${this._sceneIndex}`);
+		}
 
-    this.releaseAllModel();
-    const instance = new LAppModel();
-    instance.setSubdelegate(this._subdelegate);
-    instance.loadAssets(modelPath, modelJsonName);
-    this._models.pushBack(instance);
-  }
+		// ModelDir[]に保持したディレクトリ名から
+		// model3.jsonのパスを決定する。
+		// ディレクトリ名とmodel3.jsonの名前を一致させておくこと。
+		const model: string = LAppDefine.ModelDir;
+		const modelPath: string = LAppDefine.ResourcesPath + model + '/';
+		let modelJsonName: string = model + '.model3.json';
 
-  public setViewMatrix(m: CubismMatrix44) {
-    for (let i = 0; i < 16; i++) {
-      this._viewMatrix.getArray()[i] = m.getArray()[i];
-    }
-  }
+		this.releaseAllModel();
+		const instance = new LAppModel();
+		instance.setSubdelegate(this._subdelegate);
+		instance.loadAssets(modelPath, modelJsonName);
+		this._models.pushBack(instance);
+	}
 
-  /**
-   * モデルの追加
-   */
-  public addModel(sceneIndex: number = 0): void {
-    this._sceneIndex = sceneIndex;
-    this.changeScene();
-  }
+	public setViewMatrix(m: CubismMatrix44) {
+		for (let i = 0; i < 16; i++) {
+			this._viewMatrix.getArray()[i] = m.getArray()[i];
+		}
+	}
 
-  /**
-   * コンストラクタ
-   */
-  public constructor() {
-    this._subdelegate = null;
-    this._viewMatrix = new CubismMatrix44();
-    this._models = new csmVector<LAppModel>();
-    this._sceneIndex = 0;
-    this._currentExpressionIndex = 0; // For cycling through expressions
-  }
+	/**
+	 * モデルの追加
+	 */
+	public addModel(sceneIndex: number = 0): void {
+		this._sceneIndex = sceneIndex;
+		this.changeScene();
+	}
 
-  /**
-   * 解放する。
-   */
-  public release(): void {}
+	/**
+	 * コンストラクタ
+	 */
+	public constructor() {
+		this._subdelegate = null;
+		this._viewMatrix = new CubismMatrix44();
+		this._models = new csmVector<LAppModel>();
+		this._sceneIndex = 0;
+		this._currentExpressionIndex = 0; // For cycling through expressions
+	}
 
-  /**
-   * 初期化する。
-   * @param subdelegate
-   */
-  public initialize(subdelegate: LAppSubdelegate): void {
-    this._subdelegate = subdelegate;
-    this.changeScene();
-  }
+	/**
+	 * 解放する。
+	 */
+	public release(): void {}
 
-  /**
-   * 自身が所属するSubdelegate
-   */
-  private _subdelegate: LAppSubdelegate;
+	/**
+	 * 初期化する。
+	 * @param subdelegate
+	 */
+	public initialize(subdelegate: LAppSubdelegate): void {
+		this._subdelegate = subdelegate;
+		this.changeScene();
+	}
 
-  _viewMatrix: CubismMatrix44; // モデル描画に用いるview行列
-  _models: csmVector<LAppModel>; // モデルインスタンスのコンテナ
-  private _sceneIndex: number; // 表示するシーンのインデックス値
-  private _currentExpressionIndex: number; // For cycling through expressions
+	/**
+	 * 自身が所属するSubdelegate
+	 */
+	private _subdelegate: LAppSubdelegate;
 
-  // モーション再生開始のコールバック関数
-  beganMotion = (self: ACubismMotion): void => {
-    LAppPal.printMessage('Motion Began:');
-    console.log(self);
-  };
-  // モーション再生終了のコールバック関数
-  finishedMotion = (self: ACubismMotion): void => {
-    LAppPal.printMessage('Motion Finished:');
-    console.log(self);
-  };
+	_viewMatrix: CubismMatrix44; // モデル描画に用いるview行列
+	_models: csmVector<LAppModel>; // モデルインスタンスのコンテナ
+	private _sceneIndex: number; // 表示するシーンのインデックス値
+	private _currentExpressionIndex: number; // For cycling through expressions
+
+	// モーション再生開始のコールバック関数
+	beganMotion = (self: ACubismMotion): void => {
+		LAppPal.printMessage('Motion Began:');
+		console.log(self);
+	};
+	// モーション再生終了のコールバック関数
+	finishedMotion = (self: ACubismMotion): void => {
+		LAppPal.printMessage('Motion Finished:');
+		console.log(self);
+	};
 }

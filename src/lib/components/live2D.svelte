@@ -7,12 +7,12 @@
 
 	onMount(async () => {
 		const { Live2DCubismCore } = await import('$lib/live2d/Core/live2dcubismcore.min.js');
-		
+
 		(globalThis as any).Live2DCubismCore = Live2DCubismCore;
-		
+
 		const { LAppDelegate } = await import('$lib/live2d/utils/lappdelegate');
 		lappDelegate = LAppDelegate;
-		
+
 		const delegate = LAppDelegate.getInstance();
 		if (delegate.initialize()) {
 			delegate.run();
@@ -34,16 +34,12 @@
 			live2dManager.setExpression(expressionName);
 		}
 	}
-
 </script>
 
 <canvas
 	{...$$restProps}
 	bind:this={live2DCanvas}
 	id="live2d4"
-	class="h-[50vh] md:h-[65vh] w-full md:w-[40vw]"
+	class="h-[50vh] w-full md:h-[65vh] md:w-[40vw]"
 	style="filter: var(--filter-settings);"
 ></canvas>
-
-
-

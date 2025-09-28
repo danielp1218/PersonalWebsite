@@ -25,7 +25,7 @@ export const ViewLogicalMaxTop = 2.0;
 
 export const ResourcesPath = '/live2d/models/';
 
-export const ModelDir: string = 'daniel'
+export const ModelDir: string = 'daniel';
 
 export const MotionGroupIdle = 'Idle';
 export const MotionGroupTapBody = 'TapBody';

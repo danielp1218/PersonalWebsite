@@ -2,9 +2,7 @@
 	"Version": 3,
 	"FileReferences": {
 		"Moc": "Daniel.moc3",
-		"Textures": [
-			"Daniel.2048/texture_00.png"
-		],
+		"Textures": ["Daniel.2048/texture_00.png"],
 		"Physics": "Daniel.physics3.json",
 		"DisplayInfo": "Daniel.cdi3.json",
 		"Expressions": [
@@ -40,7 +38,7 @@
 			"Id": "HitArea"
 		},
 		{
-			"Name": "Body", 
+			"Name": "Body",
 			"Id": "HitArea"
 		}
 	],
@@ -53,9 +51,7 @@
 		{
 			"Target": "Parameter",
 			"Name": "EyeBlink",
-			"Ids": [
-				"ParamEyeLOpen"
-			]
+			"Ids": ["ParamEyeLOpen"]
 		}
 	]
 }

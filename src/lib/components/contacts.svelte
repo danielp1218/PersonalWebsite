@@ -5,10 +5,20 @@
 </script>
 
 <div class="flex justify-center space-x-4">
-	<a href="https://github.com/danielp1218" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-secondary">
+	<a
+		href="https://github.com/danielp1218"
+		target="_blank"
+		rel="noopener noreferrer"
+		class="text-primary hover:text-secondary"
+	>
 		<Github class="h-6 w-6" />
 	</a>
-	<a href="https://www.linkedin.com/in/danielpu1/" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-secondary">
+	<a
+		href="https://www.linkedin.com/in/danielpu1/"
+		target="_blank"
+		rel="noopener noreferrer"
+		class="text-primary hover:text-secondary"
+	>
 		<Linkedin class="h-6 w-6" />
 	</a>
 	<a href="mailto:danielpu2007@gmail.com" class="text-primary hover:text-secondary">

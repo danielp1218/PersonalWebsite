@@ -11,50 +11,50 @@
  * ファイル読み込みや時刻取得等のプラットフォームに依存する関数をまとめる。
  */
 export class LAppPal {
-  /**
-   * ファイルをバイトデータとして読みこむ
-   *
-   * @param filePath 読み込み対象ファイルのパス
-   * @return
-   * {
-   *      buffer,   読み込んだバイトデータ
-   *      size        ファイルサイズ
-   * }
-   */
-  public static loadFileAsBytes(
-    filePath: string,
-    callback: (arrayBuffer: ArrayBuffer, size: number) => void
-  ): void {
-    fetch(filePath)
-      .then(response => response.arrayBuffer())
-      .then(arrayBuffer => callback(arrayBuffer, arrayBuffer.byteLength));
-  }
+	/**
+	 * ファイルをバイトデータとして読みこむ
+	 *
+	 * @param filePath 読み込み対象ファイルのパス
+	 * @return
+	 * {
+	 *      buffer,   読み込んだバイトデータ
+	 *      size        ファイルサイズ
+	 * }
+	 */
+	public static loadFileAsBytes(
+		filePath: string,
+		callback: (arrayBuffer: ArrayBuffer, size: number) => void
+	): void {
+		fetch(filePath)
+			.then((response) => response.arrayBuffer())
+			.then((arrayBuffer) => callback(arrayBuffer, arrayBuffer.byteLength));
+	}
 
-  /**
-   * デルタ時間（前回フレームとの差分）を取得する
-   * @return デルタ時間[ms]
-   */
-  public static getDeltaTime(): number {
-    return this.deltaTime;
-  }
+	/**
+	 * デルタ時間（前回フレームとの差分）を取得する
+	 * @return デルタ時間[ms]
+	 */
+	public static getDeltaTime(): number {
+		return this.deltaTime;
+	}
 
-  public static updateTime(): void {
-    this.currentFrame = Date.now();
-    this.deltaTime = (this.currentFrame - this.lastFrame) / 1000;
-    this.lastFrame = this.currentFrame;
-  }
+	public static updateTime(): void {
+		this.currentFrame = Date.now();
+		this.deltaTime = (this.currentFrame - this.lastFrame) / 1000;
+		this.lastFrame = this.currentFrame;
+	}
 
-  /**
-   * メッセージを出力する
-   * @param message 文字列
-   */
-  public static printMessage(message: string): void {
-    console.log(message);
-  }
+	/**
+	 * メッセージを出力する
+	 * @param message 文字列
+	 */
+	public static printMessage(message: string): void {
+		console.log(message);
+	}
 
-  static lastUpdate = Date.now();
+	static lastUpdate = Date.now();
 
-  static currentFrame = 0.0;
-  static lastFrame = 0.0;
-  static deltaTime = 0.0;
+	static currentFrame = 0.0;
+	static lastFrame = 0.0;
+	static deltaTime = 0.0;
 }

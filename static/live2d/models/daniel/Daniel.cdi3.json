@@ -140,13 +140,7 @@
 	"ParameterGroups": [],
 	"Parts": [],
 	"CombinedParameters": [
-		[
-			"ParamAngleX",
-			"ParamAngleY"
-		],
-		[
-			"ParamEyeBallX",
-			"ParamEyeBallY"
-		]
+		["ParamAngleX", "ParamAngleY"],
+		["ParamEyeBallX", "ParamEyeBallY"]
 	]
 }
