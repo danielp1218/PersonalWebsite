@@ -4,6 +4,10 @@
 	let { href, children } = $props<{ href: string; children: Snippet }>();
 </script>
 
-<a href={href} class="text-primary underline transition-[font-weight] duration-300 hover:font-bold">
-    {@render children()}
+<a
+	{href}
+	target="_blank"
+	class="relative w-fit no-underline after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-secondary/20 after:transition-colors after:duration-300 after:content-[''] hover:after:bg-secondary/80 text-primary"
+>
+	{@render children()}
 </a>

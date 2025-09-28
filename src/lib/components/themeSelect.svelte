@@ -17,7 +17,7 @@
 			class={`bg-primary relative aspect-square h-4 w-4
             items-center justify-center overflow-hidden rounded-full border-2
             border-gray-400/10 p-4 hover:border-black/20 focus:outline-none ${themeStore.name === themeName ? 'ring-primary ring-2 ring-offset-2' : ''}`}
-			style="background-color: {colour}; transition: none;"
+			style="background-color: {colour};"
 		>
 		</button>
 	{/each}

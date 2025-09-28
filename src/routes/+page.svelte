@@ -9,7 +9,6 @@
 
 <div class="flex w-full flex-col md:flex-row">
 	<div
-		in:fade={{ duration: 500 }}
 		class="relative w-full py-16 md:fixed md:top-0 md:left-0 md:z-10 md:h-screen md:w-[40%] md:content-center"
 	>
 		<Live2D />
@@ -17,16 +16,15 @@
 			class="text-secondary font-title right-0 left-0 m-4 text-center text-3xl"
 		>
 			<h1>hi i'm <span class="text-primary font-black">daniel pu</span></h1>
-			<span class="flex w-full justify-center"
-				><hr class="border-secondary m-4 w-24 border-t-2" /></span
-			>
+			<span class="flex w-full justify-center">
+				<hr class="border-secondary m-4 w-24 border-t-2" />
+			</span>
 			<h3 class="text-secondary text-lg italic">cs @ uwaterloo, looking for S26 co-ops</h3>
 		</div>
 		<Contacts />
 	</div>
 
 	<div
-		in:fade={{ delay: 250, duration: 500 }}
 		class="text-primary min-h-screen w-full bg-gray-400/10 md:pl-16 md:ml-[40%] md:w-[60%]"
 	>
 		<div class="absolute md:fixed top-0 right-0 md:left-[40%] z-50 m-4 md:w-10">

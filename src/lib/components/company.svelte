@@ -6,7 +6,7 @@
 </script>
 
 <Link href={href}>
-    <span class="flex items-center hover:font-bold">
+    <span class="flex items-center">
         <ImageIcon src={src}/>
         {name}
     </span>
