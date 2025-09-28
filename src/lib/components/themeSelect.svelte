@@ -9,7 +9,7 @@
 	}
 </script>
 
-<div class="flex flex-row gap-4 md:flex-col">
+<div class="flex flex-row gap-4 md:flex-col md:w-10">
 	{#each Object.entries(themePrimaries) as [themeName, colour] (themeName)}
 		<button
 			onclick={() => themeStore.setTheme(themeName)}
@@ -21,5 +21,5 @@
 		>
 		</button>
 	{/each}
-	<h6 class="cursor-vertical-text [writing-mode:vertical-lr] text-2xl align-middle rotate-180">{themeStore.name}</h6>
+	<h6 class="cursor-vertical-text [writing-mode:vertical-lr] text-2xl align-middle">{themeStore.name}</h6>
 </div>

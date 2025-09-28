@@ -6,8 +6,8 @@
 }
 
 @font-face {
-	font-family: 'SUSEMono';
-	src: url('/fonts/SUSEMono-Medium.ttf') format('truetype');
+	font-family: 'PlayfairDisplay';
+	src: url('/fonts/PlayfairDisplay-Regular.ttf') format('truetype');
 }
 
 @theme {
@@ -16,7 +16,7 @@
 	--color-background: 255, 255, 255; /* White */
 
 	--font-title: poppins, sans-serif;
-	--font-mono: SUSEMono, monospace;
+	--font-content: PlayfairDisplay, serif;
 }
 
 /* Add global transition for elements using theme colors */
@@ -29,7 +29,7 @@
 }
 
 body {
-	background-color: rgb(var(--color-background));
+	background-color: var(--color-background);
 	color: rgb(var(--color-primary));
 	font-size: 16px;
 }
