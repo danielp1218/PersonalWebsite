@@ -5,6 +5,9 @@
 	import ContentSection from '$lib/components/contentSection.svelte';
 	import ThemeSelect from '$lib/components/themeSelect.svelte';
 	import Company from '$lib/components/company.svelte';
+	import AnimatedList from '$lib/components/animatedList.svelte';
+	import { loading } from '$lib/stores/loadingStore';
+	import Loading from '$lib/components/loading.svelte';
 </script>
 
 <div class="flex w-full flex-col md:flex-row">
@@ -24,15 +27,21 @@
 		<Contacts />
 	</div>
 
+
+{#if $loading}
+	<Loading />
+{:else}
 	<div
 		class="text-primary min-h-screen w-full bg-gray-400/10 md:pl-16 md:ml-[40%] md:w-[60%]"
 	>
 		<div class="absolute md:fixed top-0 right-0 md:left-[40%] z-50 m-4 md:w-10">
 			<ThemeSelect />
 		</div>
-		<div class="border-background border-l-4 md:p-8">
-			<ContentSection id="about" title="about me">
-				<ul class="text-primary pl-5" style="list-style-type: '➢  ';">
+		<div class="border-background border-l-4 md:p-8"
+			in:fade={{ delay:500, duration: 500 }}
+		>
+			<ContentSection id="about" title="about me" >
+				<AnimatedList>
 					<li class="mt-4 mb-2 text-xl leading-relaxed">
 						<p class="flex flex-wrap">
 							Bachelor of Computer Science @ <Company href="https://uwaterloo.ca/" name="UWaterloo" src="/images/logos/uwaterloo.webp" />
@@ -76,7 +85,7 @@
 						In my free time, you can find me playing badminton, working on
 						cool projects, or listening to music!
 					</li>
-				</ul>
+				</AnimatedList>
 			</ContentSection>
 
 			<ContentSection id="skills" title="skills">
@@ -88,4 +97,5 @@
 			</ContentSection>
 		</div>
 	</div>
+{/if}
 </div>

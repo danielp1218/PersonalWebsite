@@ -11,9 +11,6 @@
 	}
 </script>
 
-{#if $loading}
-	<Loading />
-{/if}
 <div
 	in:fade
 	class="bg-background h-full min-h-screen w-full"
