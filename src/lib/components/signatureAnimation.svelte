@@ -1,5 +1,5 @@
 <script lang="ts">
-    let { duration } = $props<{ duration?: number }>();
+    let { duration = 0.4 } = $props<{ duration?: number }>();
 
 	let svgElement: SVGElement | undefined = $state();
 	let animationKey = $state(0);
@@ -45,7 +45,7 @@
 	}
 </script>
 
-{#key animationKey}
+{#key `${animationKey}-${duration}`}
 <div class="flex items-center justify-center w-full">
 	<svg 
 		bind:this={svgElement}
@@ -68,7 +68,7 @@
 					from="1000" 
 					to="0" 
 					dur="{duration}s" 
-					begin="{index * 0.02}s"
+					begin="{index * (duration * 0.05)}s"
 					fill="freeze"
 				/>
 			</path>

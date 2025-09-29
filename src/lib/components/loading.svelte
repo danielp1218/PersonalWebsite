@@ -8,6 +8,6 @@
 	class="fixed top-0 left-0 z-[9999] flex h-screen w-screen items-center justify-center bg-white"
 >
 	<div class="w-[30%]">
-		<SignatureAnimation duration={0.1} />
+		<SignatureAnimation duration={0.25} />
 	</div>
 </div>
