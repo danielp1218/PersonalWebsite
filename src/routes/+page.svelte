@@ -47,14 +47,14 @@
 							Bachelor of Computer Science @ <Company href="https://uwaterloo.ca/" name="UWaterloo" src="/images/logos/uwaterloo.webp" />
 						</p>
 					</li>
-					<li class="mt-4 mb-2 text-xl leading-relaxed">
+					<li class="mb-2 text-xl leading-relaxed">
 						<p class="flex flex-wrap">
 							Prev. Research Programmer @ 
 							<Company href="https://research.sunnybrook.ca/" name="Sunnybrook" src="/images/logos/sunnybrook.webp" />
 						</p>
 					</li>
 					<li class="mb-2 text-xl leading-relaxed">
-						<strong>15×</strong> hackathon winner, <strong>20×</strong> participant
+						<strong>16×</strong> hackathon winner, <strong>21×</strong> participant
 						<ul class="pl-5" style="list-style-type: '▹  ';">
 							<li>
 								<p class="flex flex-wrap">
@@ -71,8 +71,9 @@
 							<li>
 								<p class="flex break-words flex-wrap">
 									Organizing
-									<Company href="https://www.uwdatascience.ca/cxc" name="CxC" src="/images/logos/dsc.png" />,&nbsp;
-									<span>Canada's largest student</span> run data hackathon
+									<Company href="https://www.uwdatascience.ca/cxc" name="CxC" src="/images/logos/dsc.png" />
+									and 
+									<Company href="https://hackthe6ix.com/" name="HT6" src="/images/logos/ht6.jpg" />
 								</p>
 							</li>
 						</ul>
