@@ -35,11 +35,11 @@
 	"HitAreas": [
 		{
 			"Name": "Head",
-			"Id": "HitArea"
+			"Id": "D_HEAD.001"
 		},
 		{
 			"Name": "Body",
-			"Id": "HitArea"
+			"Id": "D_BODY.001"
 		}
 	],
 	"Groups": [

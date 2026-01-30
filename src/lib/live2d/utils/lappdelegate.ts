@@ -72,6 +72,7 @@ export class LAppDelegate {
 			ite.preIncrement()
 		) {
 			ite.ptr().onTouchCancel(e.clientX, e.clientY);
+			ite.ptr().onPointerExit();
 		}
 	}
 

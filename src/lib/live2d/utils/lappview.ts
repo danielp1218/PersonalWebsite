@@ -15,6 +15,7 @@ import { LAppSprite } from './lappsprite';
 import { TextureInfo } from './lapptexturemanager';
 import { TouchManager } from './touchmanager';
 import { LAppSubdelegate } from './lappsubdelegate';
+import { avatarHovered, type HoverState } from '$lib/stores/avatarHovered';
 
 /**
  * 描画クラス。
@@ -40,6 +41,7 @@ export class LAppView {
 		// Initialize missing properties
 		this._changeModel = false;
 		this._isClick = false;
+		this._lastHoverCheck = 0;
 	}
 
 	/**
@@ -233,6 +235,39 @@ export class LAppView {
 
 		// Make the model look towards the mouse position
 		lapplive2dmanager.onDrag(viewX, viewY);
+
+		// Throttled hover detection
+		const now = performance.now();
+		if (now - this._lastHoverCheck >= LAppDefine.HoverDetectionThrottleMs) {
+			this._lastHoverCheck = now;
+
+			// Get the model for hit testing
+			const model = lapplive2dmanager._models.at(0);
+			
+			if (model) {
+				// Transform coordinates for hit testing (without sensitivity multiplier)
+				const hitX: number = this.transformViewX(posX);
+				const hitY: number = this.transformViewY(posY);
+				
+				// Use coordinate-based detection instead of hit areas
+				// Y coordinate ranges: higher Y (negative in view coords) = head, lower Y = body
+				let newHoverState: HoverState = 'NH';
+				
+				// Check if mouse is within the model bounds (roughly -1 to 1 for both X and Y in view space)
+				if (hitX >= -1 && hitX <= 1 && hitY >= -1.5 && hitY <= 1) {
+					// Head is roughly upper portion (hitY > -0.3)
+					// Body is lower portion (hitY <= -0.3)
+					if (hitY > -0.3) {
+						newHoverState = 'HH';
+					} else {
+						newHoverState = 'BH';
+					}
+				}
+
+				// Update the store
+				avatarHovered.set(newHoverState);
+			}
+		}
 	}
 
 	/**
@@ -302,6 +337,14 @@ export class LAppView {
 		return this._deviceToScreen.transformY(deviceY);
 	}
 
+	/**
+	 * ポインタが離れたときに呼ばれる。
+	 */
+	public onPointerExit(): void {
+		// Reset hover state when pointer exits the canvas
+		avatarHovered.set('NH');
+	}
+
 	_touchManager: TouchManager; // タッチマネージャー
 	_deviceToScreen: CubismMatrix44; // デバイスからスクリーンへの行列
 	_viewMatrix: CubismViewMatrix; // viewMatrix
@@ -311,4 +354,5 @@ export class LAppView {
 	_changeModel: boolean; // モデル切り替えフラグ
 	_isClick: boolean; // クリック中
 	private _subdelegate!: LAppSubdelegate;
+	private _lastHoverCheck: number; // Last timestamp for hover detection throttling
 }

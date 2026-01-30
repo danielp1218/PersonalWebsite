@@ -48,5 +48,6 @@ export const DebugTouchLogEnable = dev;
 // Mouse tracking settings
 export const MouseTrackingEnable = true;
 export const MouseTrackingSensitivity = 1.0; // Multiplier for mouse tracking response
+export const HoverDetectionThrottleMs = 150; // Throttle interval for hover detection in milliseconds
 
 export const CubismLoggingLevel: LogLevel = dev ? LogLevel.LogLevel_Verbose : LogLevel.LogLevel_Off;

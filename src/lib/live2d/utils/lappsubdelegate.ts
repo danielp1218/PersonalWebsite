@@ -315,6 +315,17 @@ export class LAppSubdelegate {
 		this._view.onTouchesEnded(localX, localY);
 	}
 
+	/**
+	 * ポインタが離れたときに呼ばれる。
+	 */
+	public onPointerExit(): void {
+		if (!this._view) {
+			return;
+		}
+
+		this._view.onPointerExit();
+	}
+
 	public isContextLost(): boolean {
 		return this._glManager.getGl().isContextLost();
 	}

@@ -30,8 +30,10 @@
 		"vite": "^6.4.1"
 	},
 	"dependencies": {
+		"@ai-sdk/google": "^3.0.18",
 		"@vercel/analytics": "^1.6.1",
 		"@vercel/blob": "^2.0.0",
+		"ai": "^6.0.62",
 		"pixel-profile": "workspace:*",
 		"pixel-profile-server": "workspace:*",
 		"pixel-profile-utils": "workspace:*"

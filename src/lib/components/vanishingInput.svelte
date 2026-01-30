@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { fly } from 'svelte/transition';
-
 	// Define interfaces
 	interface PixelData {
 		x: number;
@@ -68,7 +66,9 @@
 
 		const fontSize = parseFloat(computedStyles.getPropertyValue('font-size'));
 		ctx.font = `${fontSize * 2}px ${computedStyles.fontFamily}`;
-		ctx.fillStyle = '#FFF';
+		// Use theme primary color for canvas text
+		const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim();
+		ctx.fillStyle = `rgb(${primaryColor})`;
 		ctx.fillText(value, 16, 40);
 
 		const imageData = ctx.getImageData(0, 0, 800, 800);
@@ -91,11 +91,15 @@
 		newDataRef = newData.map(({ x, y, color }) => ({ x, y, r: 1, color }));
 	}
 
-	function animate(start: number = 0): void {
+	function animate(center: number, radius: number, maxRadius: number): void {
 		animationFrameId = requestAnimationFrame(() => {
 			const newArr: AnimatedPixel[] = [];
+			const currentRadius = Math.min(radius, maxRadius);
+			const left = Math.max(0, Math.floor(center - currentRadius));
+			const width = Math.min(800, Math.ceil(currentRadius * 2));
 			for (const current of newDataRef) {
-				if (current.x < start) {
+				const inBand = Math.abs(current.x - center) <= currentRadius;
+				if (!inBand) {
 					newArr.push(current);
 				} else {
 					if (current.r <= 0) {
@@ -111,9 +115,9 @@
 			newDataRef = newArr;
 			const ctx = canvasRef?.getContext('2d');
 			if (ctx) {
-				ctx.clearRect(start, 0, 800, 800);
+				ctx.clearRect(left, 0, width, 800);
 				newDataRef.forEach(({ x, y, r, color }) => {
-					if (x > start) {
+					if (Math.abs(x - center) <= currentRadius) {
 						ctx.beginPath();
 						ctx.rect(x, y, r, r);
 						ctx.fillStyle = color;
@@ -123,7 +127,7 @@
 				});
 			}
 			if (newDataRef.length > 0) {
-				animate(start - 8);
+				animate(center, radius + 8, maxRadius);
 			} else {
 				value = '';
 				animating = false;
@@ -142,13 +146,31 @@
 	}
 
 	function vanishAndSubmit(): void {
+		if (!value) return;
+
+		const submittedValue = value; // Capture value before animation
 		animating = true;
 		draw();
-		if (value) {
-			const maxX = Math.max(...newDataRef.map(({ x }) => x));
-			animate(maxX);
-			onsubmit?.(value);
+
+		if (newDataRef.length > 0) {
+			// Animation with pixels found
+			const xs = newDataRef.map(({ x }) => x);
+			const minX = Math.min(...xs);
+			const maxX = Math.max(...xs);
+			const center = (minX + maxX) / 2;
+			const maxRadius = Math.max(center - minX, maxX - center);
+			animate(center, 0, maxRadius);
+		} else {
+			// No pixels found, skip animation
+			value = '';
+			animating = false;
+			setTimeout(() => {
+				inputRef?.focus();
+			}, 100);
 		}
+
+		// Always call onsubmit regardless of animation
+		onsubmit?.(submittedValue);
 	}
 
 	function handleSubmit(e: Event): void {
@@ -180,15 +202,15 @@
 </script>
 
 <form
-	class="relative mx-auto h-12 w-full max-w-xl overflow-hidden rounded-full bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 dark:bg-zinc-800 {value
-		? 'bg-gray-50'
+	class="relative mx-auto h-12 w-[70%] max-w-xl overflow-hidden rounded-full bg-background/80 backdrop-blur-md border-2 border-secondary/20 hover:border-secondary/40 shadow-md transition-all duration-200 {value
+		? 'bg-background/90'
 		: ''}"
 	onsubmit={handleSubmit}
 >
 	<!-- Canvas Element -->
 	<canvas
 		bind:this={canvasRef}
-		class="pointer-events-none absolute top-[20%] left-2 origin-top-left scale-50 pr-20 text-base invert sm:left-8 dark:invert-0 {animating
+		class="pointer-events-none absolute top-[20%] left-2 origin-top-left scale-50 pr-20 text-base sm:left-8 transition-none {animating
 			? 'opacity-100'
 			: 'opacity-0'}"
 	></canvas>
@@ -199,8 +221,8 @@
 		bind:value
 		disabled={animating}
 		type="text"
-		class="relative z-50 size-full rounded-full border-none bg-transparent pr-20 pl-4 text-sm text-black focus:ring-0 focus:outline-none sm:pl-10 sm:text-base dark:text-white {animating
-			? 'text-transparent dark:text-transparent'
+		class="relative z-50 size-full rounded-full border-none bg-transparent pr-20 pl-4 text-sm text-primary font-content focus:ring-0 focus:outline-none sm:pl-10 sm:text-base {animating
+			? 'text-transparent'
 			: ''}"
 		onkeydown={handleKeyDown}
 		oninput={handleInput}
@@ -210,7 +232,7 @@
 	<button
 		disabled={!value}
 		type="submit"
-		class="absolute top-1/2 right-2 z-50 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-black transition duration-200 disabled:bg-gray-100 dark:bg-zinc-900 dark:disabled:bg-zinc-700"
+		class="absolute top-1/2 right-2 z-50 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-primary hover:scale-110 active:scale-95 transition-all duration-200 disabled:bg-secondary/20"
 		aria-label="Submit"
 	>
 		<svg
@@ -223,7 +245,7 @@
 			stroke-width="2"
 			stroke-linecap="round"
 			stroke-linejoin="round"
-			class="size-4 text-gray-300"
+			class="size-4 text-background"
 		>
 			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 			<path
@@ -241,11 +263,7 @@
 	<div class="pointer-events-none absolute inset-0 flex items-center rounded-full">
 		{#if showPlaceholder}
 			{#key currentPlaceholder}
-				<p
-					class="w-[calc(100%-2rem)] truncate pl-4 text-left text-sm font-normal text-neutral-500 sm:pl-10 sm:text-base dark:text-zinc-500"
-					in:fly={{ y: 16, duration: 300, delay: 300 }}
-					out:fly={{ y: -16, duration: 300 }}
-				>
+				<p class="w-[calc(100%-2rem)] truncate pl-4 text-left text-sm font-normal text-secondary/60 font-content sm:pl-10 sm:text-base">
 					{placeholders[currentPlaceholder]}
 				</p>
 			{/key}
