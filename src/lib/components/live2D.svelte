@@ -13,6 +13,7 @@
 	let currentSentence = $state('');
 	let sentenceKey = $state(0);
 	let isStreaming = $state(false);
+	let conversationHistory = $state<Array<{ role: 'user' | 'assistant'; content: string }>>([]);
 
 	onMount(async () => {
 		const { Live2DCubismCore } = await import('$lib/live2d/Core/live2dcubismcore.min.js');
@@ -51,11 +52,17 @@
 		sentenceKey = 0;
 		isStreaming = true;
 
+		conversationHistory.push({ role: 'user', content: message });
+		let fullResponse = '';
+
 		try {
 			const response = await fetch('/api/chat', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ message })
+				body: JSON.stringify({
+					message,
+					history: conversationHistory
+				})
 			});
 
 			const reader = response.body?.getReader();
@@ -72,25 +79,29 @@
 				for (const line of lines) {
 					if (line.startsWith('data: ')) {
 						const data = line.slice(6);
-						if (data === '[DONE]') {
-							isStreaming = false;
-							// Clear after final sentence displays
-							setTimeout(() => {
-								currentSentence = '';
-								sentenceKey++;
-							}, 3000);
-							break;
-						}
 						try {
 							const parsed = JSON.parse(data);
 							if (parsed.type === 'sentence') {
 								// Update sentence and increment key to trigger transition
 								currentSentence = parsed.content;
 								sentenceKey++;
+								fullResponse += (fullResponse ? ' ' : '') + parsed.content;
 							}
 						} catch (e) {
-							// Skip invalid JSON
+							// skip
 						}
+					} else if (line.startsWith('[DONE]')) {
+						isStreaming = false;
+						// add to history
+						if (fullResponse) {
+							conversationHistory.push({ role: 'assistant', content: fullResponse });
+						}
+						// clear after final sentence displays
+						setTimeout(() => {
+							currentSentence = '';
+							sentenceKey++;
+						}, 2000);
+						break;
 					}
 				}
 			}
@@ -118,13 +129,13 @@
 
 	<FloatingText currentSentence={currentSentence} key={sentenceKey} />
 
-	{#if $avatarHovered === 'BH' && !isStreaming}
+	{#if ($avatarHovered === 'BH' || $avatarHovered === 'HH')&& !isStreaming}
 		<div
 			class="absolute left-0 right-0 bottom-4 z-20 px-4 md:bottom-2"
 			transition:fade={{ duration: 300 }}
 		>
 			<VanishingInput
-				placeholders={['Type something...', 'Say hello!', 'Ask me anything...']}
+				placeholders={['Say hello!', 'Ask me anything...']}
 				onsubmit={handleChatSubmit}
 			/>
 		</div>

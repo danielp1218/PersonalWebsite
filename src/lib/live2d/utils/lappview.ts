@@ -249,17 +249,18 @@ export class LAppView {
 				const hitX: number = this.transformViewX(posX);
 				const hitY: number = this.transformViewY(posY);
 				
-				// Use coordinate-based detection instead of hit areas
-				// Y coordinate ranges: higher Y (negative in view coords) = head, lower Y = body
+				// Use coordinate-based detection with accurate bounds from model
 				let newHoverState: HoverState = 'NH';
-				
-				// Check if mouse is within the model bounds (roughly -1 to 1 for both X and Y in view space)
-				if (hitX >= -1 && hitX <= 1 && hitY >= -1.5 && hitY <= 1) {
-					// Head is roughly upper portion (hitY > -0.3)
-					// Body is lower portion (hitY <= -0.3)
-					if (hitY > -0.3) {
+
+				// Check if mouse is within the model bounds (based on actual model coordinates)
+				// X range: approximately -0.6 to 0.6
+				// Y range: head from -0.76 to 0.27, body from -1.32 to -0.87
+				if (hitX >= -0.65 && hitX <= 0.65) {
+					if (hitY >= -0.76 && hitY <= 0.3) {
+						// Head region (upper portion)
 						newHoverState = 'HH';
-					} else {
+					} else if (hitY >= -1.35 && hitY < -0.76) {
+						// Body region (lower portion)
 						newHoverState = 'BH';
 					}
 				}
