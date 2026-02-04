@@ -28,7 +28,7 @@
 				></div>
 			</span>
 			<h3 class="text-secondary/80 text-base italic md:text-lg">
-				CS @ UWaterloo, looking for s26 coops
+				CS @ UWaterloo
 			</h3>
 		</div>
 		<Contacts />
