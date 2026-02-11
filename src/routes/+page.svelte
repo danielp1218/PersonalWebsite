@@ -10,6 +10,9 @@
 	import Loading from '$lib/components/loading.svelte';
 	import ProjectList from '$lib/components/projects/projectList.svelte';
 	import Footer from '$lib/components/footer.svelte';
+
+	let chatSentence = $state('');
+	let chatIsStreaming = $state(false);
 </script>
 
 <div class="flex w-full flex-col md:flex-row">
@@ -17,11 +20,27 @@
 		class="relative w-full py-12 md:fixed md:top-0 md:left-0 md:z-10 md:h-screen md:w-[40%] md:content-center md:py-16"
 		class:opacity-0={$loading}
 	>
-		<Live2D />
+		<Live2D bind:currentSentence={chatSentence} bind:isStreaming={chatIsStreaming} />
 		<div class="text-secondary font-title right-0 left-0 m-4 text-center">
-			<h1 class="text-2xl md:text-3xl">
-				hi i'm <span class="text-primary font-black tracking-tight">Daniel Pu</span>
-			</h1>
+			<div class="overflow-hidden relative min-h-10 md:min-h-12">
+				{#if chatSentence}
+					{#key chatSentence}
+						<h1 class="text-2xl md:text-3xl absolute inset-0" in:fade={{ duration: 300 }} out:fade={{ duration: 200 }}>
+							<span 
+								class="text-primary font-black tracking-tight inline-block"
+								class:animate-marquee={chatSentence.length > 40}
+								class:whitespace-nowrap={chatSentence.length > 40}
+							>
+								{chatSentence}
+							</span>
+						</h1>
+					{/key}
+				{:else}
+					<h1 class="text-2xl md:text-3xl absolute inset-0">
+						hi i'm <span class="text-primary font-black tracking-tight">Daniel Pu</span>
+					</h1>
+				{/if}
+			</div>
 			<span class="my-4 flex w-full justify-center">
 				<div
 					class="from-secondary/0 via-secondary/40 to-secondary/0 h-px w-32 bg-linear-to-r"
@@ -155,6 +174,15 @@
 
 	.bookmark {
 		cursor: pointer;
+	}
+
+	@keyframes marquee {
+		0% { transform: translateX(100%); }
+		100% { transform: translateX(-100%); }
+	}
+	
+	.animate-marquee {
+		animation: marquee 10s linear infinite;
 	}
 
 	.bookmark-ribbon {

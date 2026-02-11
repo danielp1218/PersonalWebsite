@@ -36,7 +36,8 @@
 		"ai": "^6.0.62",
 		"pixel-profile": "workspace:*",
 		"pixel-profile-server": "workspace:*",
-		"pixel-profile-utils": "workspace:*"
+		"pixel-profile-utils": "workspace:*",
+		"zod": "^4.3.6"
 	},
 	"private": true,
 	"scripts": {

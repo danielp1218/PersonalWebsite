@@ -123,13 +123,13 @@
 	</button>
 
 	<!-- Placeholder Text -->
-	<div class="pointer-events-none absolute inset-0 flex items-center rounded-full">
+	<div class="pointer-events-none absolute inset-0 flex items-center rounded-full overflow-hidden">
 		{#if showPlaceholder}
 			{#key currentPlaceholder}
 				<p
 					in:fly={{ y: 10, duration: 500 }}
 					out:fly={{ y: -10, duration: 500 }}
-					class="w-[calc(100%-2rem)] truncate pl-4 text-left text-sm font-normal text-secondary/60 font-content sm:pl-10 sm:text-base"
+					class="absolute left-0 right-20 truncate pl-4 text-left text-sm font-normal text-secondary/60 font-content sm:pl-10 sm:text-base"
 				>
 					{placeholders[currentPlaceholder]}
 				</p>
