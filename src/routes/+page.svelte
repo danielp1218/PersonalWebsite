@@ -28,7 +28,7 @@
 				></div>
 			</span>
 			<h3 class="text-secondary/80 text-base italic md:text-lg">
-				CS @ UWaterloo
+				CS @ UWaterloo, incoming SWE @ Slash
 			</h3>
 		</div>
 		<Contacts />
@@ -110,7 +110,7 @@
 										<p>
 											Organizing
 											<Company
-												href="https://www.uwdatascience.ca/cxc"
+												href="https://cxc.uwdatascience.ca"
 												name="CxC"
 												src="/images/logos/dsc.png"
 											/>
