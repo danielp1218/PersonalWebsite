@@ -4,10 +4,10 @@
 	import VanishingInput from './vanishingInput.svelte';
 	import { avatarHovered } from '$lib/stores/avatarHovered';
 
-	let { 
+	let {
 		currentSentence = $bindable(''),
 		isStreaming = $bindable(false),
-		...restProps 
+		...restProps
 	}: {
 		currentSentence?: string;
 		isStreaming?: boolean;
@@ -46,7 +46,7 @@
 			sentenceKey++;
 
 			// Enforce minimum 800ms display duration
-			await new Promise(resolve => setTimeout(resolve, 800));
+			await new Promise((resolve) => setTimeout(resolve, 800));
 
 			// Remove from queue
 			toolCallQueue = toolCallQueue.slice(1);
@@ -127,26 +127,26 @@
 						const data = line.slice(6);
 						try {
 							const parsed = JSON.parse(data);
-							
+
 							if (parsed.type === 'tool-call') {
 								// Queue tool call for display
 								addToolCall(parsed.name);
 							} else if (parsed.type === 'error') {
 								// Display error with tool context
-								const errorMessage = parsed.tool 
+								const errorMessage = parsed.tool
 									? `⚠️ Error checking ${parsed.tool}`
 									: '⚠️ Error processing request';
 								currentSentence = errorMessage;
 								sentenceKey++;
-								
+
 								// Display error for 1000ms minimum
-								await new Promise(resolve => setTimeout(resolve, 1000));
+								await new Promise((resolve) => setTimeout(resolve, 1000));
 							} else if (parsed.type === 'sentence') {
 								// Wait for any pending tool calls to finish displaying
 								while (isProcessingToolCall || toolCallQueue.length > 0) {
-									await new Promise(resolve => setTimeout(resolve, 100));
+									await new Promise((resolve) => setTimeout(resolve, 100));
 								}
-								
+
 								// Update sentence and increment key to trigger transition
 								currentSentence = parsed.content;
 								sentenceKey++;
@@ -186,7 +186,7 @@
 <div class="relative">
 	{#if ($avatarHovered === 'BH' || $avatarHovered === 'HH') && !isStreaming}
 		<div
-			class="absolute left-0 right-0 top-4 z-20 px-4 md:top-2"
+			class="absolute top-4 right-0 left-0 z-20 px-4 md:top-2"
 			transition:fade={{ duration: 300 }}
 		>
 			<VanishingInput

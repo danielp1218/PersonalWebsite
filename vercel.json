@@ -6,9 +6,5 @@
 			"schedule": "0 0 * * *"
 		}
 	],
-	"bunVersion": "1.3.4",
-	"scripts": {
-		"build": "bun --bun run build",
-		"start": "bun --bun run start"
-	}
+	"bunVersion": "1.3.4"
 }

@@ -76,7 +76,7 @@
 </script>
 
 <form
-	class="relative mx-auto h-12 w-[70%] max-w-xl overflow-hidden rounded-full bg-background/80 backdrop-blur-md border-2 border-primary/20 hover:border-secondary/40 shadow-md transition-all duration-200 {value
+	class="bg-background/80 border-primary/20 hover:border-secondary/40 relative mx-auto h-12 w-[70%] max-w-xl overflow-hidden rounded-full border-2 shadow-md backdrop-blur-md transition-all duration-200 {value
 		? 'bg-background/90'
 		: ''}"
 	onsubmit={handleSubmit}
@@ -86,7 +86,7 @@
 		bind:this={inputRef}
 		bind:value
 		type="text"
-		class="relative z-50 size-full rounded-full border-none bg-transparent pr-20 pl-4 text-sm text-primary font-content focus:ring-0 focus:outline-none sm:pl-10 sm:text-base"
+		class="text-primary font-content relative z-50 size-full rounded-full border-none bg-transparent pr-20 pl-4 text-sm focus:ring-0 focus:outline-none sm:pl-10 sm:text-base"
 		onkeydown={handleKeyDown}
 		oninput={handleInput}
 	/>
@@ -95,7 +95,7 @@
 	<button
 		disabled={!value}
 		type="submit"
-		class="absolute top-1/2 right-2 z-50 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-primary hover:scale-110 active:scale-95 transition-all duration-200 disabled:bg-secondary/20"
+		class="bg-primary disabled:bg-secondary/20 absolute top-1/2 right-2 z-50 flex size-8 -translate-y-1/2 items-center justify-center rounded-full transition-all duration-200 hover:scale-110 active:scale-95"
 		aria-label="Submit"
 	>
 		<svg
@@ -108,7 +108,7 @@
 			stroke-width="2"
 			stroke-linecap="round"
 			stroke-linejoin="round"
-			class="size-4 text-background"
+			class="text-background size-4"
 		>
 			<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 			<path
@@ -123,13 +123,13 @@
 	</button>
 
 	<!-- Placeholder Text -->
-	<div class="pointer-events-none absolute inset-0 flex items-center rounded-full overflow-hidden">
+	<div class="pointer-events-none absolute inset-0 flex items-center overflow-hidden rounded-full">
 		{#if showPlaceholder}
 			{#key currentPlaceholder}
 				<p
 					in:fly={{ y: 10, duration: 500 }}
 					out:fly={{ y: -10, duration: 500 }}
-					class="absolute left-0 right-20 truncate pl-4 text-left text-sm font-normal text-secondary/60 font-content sm:pl-10 sm:text-base"
+					class="text-secondary/60 font-content absolute right-20 left-0 truncate pl-4 text-left text-sm font-normal sm:pl-10 sm:text-base"
 				>
 					{placeholders[currentPlaceholder]}
 				</p>

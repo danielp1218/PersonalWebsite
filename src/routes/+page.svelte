@@ -22,12 +22,16 @@
 	>
 		<Live2D bind:currentSentence={chatSentence} bind:isStreaming={chatIsStreaming} />
 		<div class="text-secondary font-title right-0 left-0 m-4 text-center">
-			<div class="overflow-hidden relative min-h-10 md:min-h-12">
+			<div class="relative min-h-10 overflow-hidden md:min-h-12">
 				{#if chatSentence}
 					{#key chatSentence}
-						<h1 class="text-2xl md:text-3xl absolute inset-0" in:fade={{ duration: 300 }} out:fade={{ duration: 200 }}>
-							<span 
-								class="text-primary font-black tracking-tight inline-block"
+						<h1
+							class="absolute inset-0 text-2xl md:text-3xl"
+							in:fade={{ duration: 300 }}
+							out:fade={{ duration: 200 }}
+						>
+							<span
+								class="text-primary inline-block font-black tracking-tight"
 								class:animate-marquee={chatSentence.length > 40}
 								class:whitespace-nowrap={chatSentence.length > 40}
 							>
@@ -36,7 +40,7 @@
 						</h1>
 					{/key}
 				{:else}
-					<h1 class="text-2xl md:text-3xl absolute inset-0">
+					<h1 class="absolute inset-0 text-2xl md:text-3xl">
 						hi i'm <span class="text-primary font-black tracking-tight">Daniel Pu</span>
 					</h1>
 				{/if}
@@ -177,10 +181,14 @@
 	}
 
 	@keyframes marquee {
-		0% { transform: translateX(100%); }
-		100% { transform: translateX(-100%); }
+		0% {
+			transform: translateX(100%);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
 	}
-	
+
 	.animate-marquee {
 		animation: marquee 10s linear infinite;
 	}

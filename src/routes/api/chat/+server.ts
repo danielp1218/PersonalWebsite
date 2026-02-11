@@ -1,12 +1,12 @@
 import type { RequestHandler } from './$types';
 import { streamText, stepCountIs } from 'ai';
-import { createOpenAI } from "@ai-sdk/openai";
+import { createOpenAI } from '@ai-sdk/openai';
 import { OPENAI_API_KEY } from '$env/static/private';
 import { tools } from '$lib/ai/tools';
 import { systemPrompt } from '$lib/ai/prompts';
 
 const openai = createOpenAI({
-  apiKey: OPENAI_API_KEY
+	apiKey: OPENAI_API_KEY
 });
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -21,18 +21,18 @@ export const POST: RequestHandler = async ({ request }) => {
 		}));
 
 	const result = streamText({
-		model: openai("gpt-4o-mini"),
+		model: openai('gpt-4o-mini'),
 		system: systemPrompt,
 		messages: messages as any,
 		tools,
-		stopWhen: stepCountIs(5),
+		stopWhen: stepCountIs(5)
 	});
 
 	// SSE - stream with tool calls and sentences
 	const stream = new ReadableStream({
 		async start(controller) {
 			const encoder = new TextEncoder();
-			let buffer = "";
+			let buffer = '';
 
 			try {
 				for await (const part of result.fullStream) {
@@ -44,12 +44,12 @@ export const POST: RequestHandler = async ({ request }) => {
 						})}\n\n`;
 						controller.enqueue(encoder.encode(data));
 					}
-					
+
 					// Handle tool results (just pass through, no display)
 					else if (part.type === 'tool-result') {
 						// Skip - we don't display tool results, just move to next action
 					}
-					
+
 					// Handle text deltas
 					else if (part.type === 'text-delta') {
 						buffer += part.text;
@@ -69,14 +69,14 @@ export const POST: RequestHandler = async ({ request }) => {
 
 								const readingTime = Math.max(1500, trimmed.length * 40);
 								const totalDelay = readingTime + 1100;
-								await new Promise(resolve => setTimeout(resolve, totalDelay));
+								await new Promise((resolve) => setTimeout(resolve, totalDelay));
 							}
 
 							// Remove processed sentences from buffer
 							buffer = buffer.replace(sentenceRegex, '').trim();
 						}
 					}
-					
+
 					// Handle errors
 					else if (part.type === 'error') {
 						const errorData = `data: ${JSON.stringify({
@@ -115,7 +115,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		headers: {
 			'Content-Type': 'text/event-stream',
 			'Cache-Control': 'no-cache',
-			'Connection': 'keep-alive'
+			Connection: 'keep-alive'
 		}
 	});
 };
