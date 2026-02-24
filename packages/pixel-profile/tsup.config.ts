@@ -6,8 +6,9 @@ export default defineConfig({
 	sourcemap: true,
 	target: 'node16',
 	dts: true,
-	minify: process.env.NODE_ENV !== 'development',
+	minify: true,
 	format: ['esm'],
+	external: ['@resvg/resvg-js'],
 	esbuildOptions(options) {
 		options.tsconfig = 'tsconfig.json';
 		options.legalComments = 'external';

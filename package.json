@@ -30,17 +30,17 @@
 		"vite": "^6.4.1"
 	},
 	"dependencies": {
+		"@resvg/resvg-js": "^2.6.2",
 		"@vercel/analytics": "^1.6.1",
 		"@vercel/blob": "^2.0.0",
 		"pixel-profile": "workspace:*",
-		"pixel-profile-server": "workspace:*",
-		"pixel-profile-utils": "workspace:*"
+		"pixel-profile-server": "workspace:*"
 	},
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
-		"build": "bun run build:packages && vite build",
-		"build:packages": "bun run --cwd packages/utils build && bun run --cwd packages/pixel-profile build && bun run --cwd packages/pixel-profile-server build",
+		"dev": "bun run --bun vite dev",
+		"build": "bun run build:packages && bun run --bun vite build",
+		"build:packages": "bun run --cwd packages/pixel-profile build && bun run --cwd packages/pixel-profile-server build",
 		"build:website": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",

@@ -1,8 +1,5 @@
 import { CONSTANTS, parseArray, parseBoolean, parseString } from './utils';
-import { Hono } from 'hono';
 import { clamp, fetchStats, renderStats } from 'pixel-profile';
-
-const githubStats = new Hono();
 
 export const getStatsCard = async (req: Request) => {
 	const urlparams = new URLSearchParams(req.url);
@@ -76,9 +73,3 @@ export const getStatsCard = async (req: Request) => {
 		return Response.error();
 	}
 }
-
-githubStats.get('/', async (c) => {
-	return getStatsCard(new Request(c.req.url));
-});
-
-export default githubStats;

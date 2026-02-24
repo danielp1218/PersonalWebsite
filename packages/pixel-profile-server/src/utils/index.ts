@@ -1,21 +1,34 @@
-import { isString, objectOf, optional } from 'ts-known';
-export { parseArray, parseBoolean, parseString } from 'pixel-profile-utils';
+function isString(value: string | string[] | undefined): value is string {
+	return typeof value === 'string' || value instanceof String;
+}
 
-export const hasMessage = objectOf({
-	message: isString
-});
+export function parseArray(str: string | string[] | undefined): string[] {
+	if (Array.isArray(str)) {
+		return str;
+	}
 
-export const isPATError = objectOf({
-	response: optional(
-		objectOf({
-			data: optional(
-				objectOf({
-					message: optional(isString)
-				})
-			)
-		})
-	)
-});
+	if (!str) {
+		return [];
+	}
+
+	return str.split(',');
+}
+
+export function parseBoolean(value: string | string[] | undefined): boolean | undefined {
+	if (!isString(value)) {
+		return undefined;
+	}
+
+	if (value.toLowerCase() === 'true') {
+		return true;
+	} else if (value.toLowerCase() === 'false') {
+		return false;
+	}
+}
+
+export function parseString(value: string | string[] | undefined): string | undefined {
+	return isString(value) ? value : undefined;
+}
 
 const ONE_MINUTE = 60;
 const FIVE_MINUTES = 300;
