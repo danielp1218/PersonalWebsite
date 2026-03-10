@@ -28,6 +28,34 @@ const projects: Project[] = [
 		video: '/videos/projects/flowboard.mp4',
 		gridSize: '2x1'
 	},
+	
+	{
+		title: 'Pindex',
+		subTitle: 'Polymarket Track Winner @ NexHacks 2026',
+		oneLiner: 'Bet on anything? Pindex bets on everything.',
+		description:
+			'Agentic dependency analysis for Polymarket. Pindex finds correlated prediction markets that impact your positions, visualizes relationships as interactive D3 graphs, and lets you accept or reject dependencies with impact analysis — all as a floating Chrome extension overlay.',
+		link: 'https://www.pindex.tech',
+		github: 'https://github.com/dtpu/Pindex',
+		tech: ['WXT', 'Hono', 'Cloudflare Workers', 'OpenAI', 'Next.js'],
+		thumbnail: '/images/projects/pindex.gif',
+		video: '/videos/projects/pindex.mp4',
+		gridSize: '1x2'
+	},
+	{
+		title: 'Maatchaa',
+		subTitle: 'Finalist @ HackTheNorth 2025',
+		oneLiner: 'Match your content to the right sponsors',
+		description:
+			'Maatchaa automatically matches Shopify products with trending YouTube Shorts. Businesses can browse potential creator partnerships, tinder style. Uses multi-modal embeddings for videos and AI-generated visuals for product sets.',
+		link: 'https://maatchaa.co/',
+		github: 'https://github.com/StockerMC/Maatchaa',
+		devpost: 'https://devpost.com/software/maatchaa',
+		tech: ['Next.js', 'Python', 'YouTube API', 'Cohere', 'Gemini', 'Pinecone'],
+		thumbnail: '/images/projects/maatchaa.gif',
+		fullImage: '/images/projects/maatchaa.png',
+		gridSize: '1x1'
+	},
 	{
 		title: 'Mr. Goose',
 		subTitle: '1st Overall @ JamHacks 2025',
@@ -39,20 +67,6 @@ const projects: Project[] = [
 		thumbnail: '/images/projects/mrgoose.gif',
 		fullImage: '/images/projects/mrgoose.png',
 		gridSize: '1x2'
-	},
-	{
-		title: 'Maatchaa',
-		subTitle: 'Finalist @ HackTheNorth 2025',
-		oneLiner: 'Match your content to the right sponsors',
-		description:
-			'Maatchaa automatically matches Shopify products with trending YouTube Shorts. Businesses can browse potential creator partnerships, tinder style. Uses multi-modal embeddings for videos and AI-generated visuals for product sets.',
-		link: 'https://maatchaa.vercel.app/',
-		github: 'https://github.com/StockerMC/Maatchaa',
-		devpost: 'https://devpost.com/software/maatchaa',
-		tech: ['Next.js', 'Python', 'YouTube API', 'Cohere', 'Gemini', 'Pinecone'],
-		thumbnail: '/images/projects/maatchaa.gif',
-		fullImage: '/images/projects/maatchaa.png',
-		gridSize: '1x1'
 	},
 	{
 		title: 'Dime Defender',
@@ -98,6 +112,19 @@ const projects: Project[] = [
 		thumbnail: '/images/projects/suikagame.gif',
 		video: '/videos/projects/suika.mp4',
 		gridSize: '1x2'
+	},
+	{
+		title: 'Copped',
+		subTitle: 'Reactiv Track Winner @ Hack Canada 2026',
+		oneLiner: 'UGC in NFCs.',
+		description:
+			'Pays Canadian shoppers to record 15-second video reviews right after purchase. Viewer clips stream via NFC/QR at the exact point of decision; creator clips earn $5 on publish and another $5 per conversion — all through an iOS App Clip with no login needed.',
+		github: 'https://github.com/Tankman61/HackCanada2026',
+		devpost: 'https://devpost.com/software/copped',
+		tech: ['Swift', 'Cloudflare Workers', 'Hono', 'NeonDB', 'PostgreSQL', 'R2'],
+		thumbnail: '/images/projects/copped.png',
+		video: '/videos/projects/copped.mp4',
+		gridSize: '1x1'
 	},
 	{
 		title: 'IgniteAI',

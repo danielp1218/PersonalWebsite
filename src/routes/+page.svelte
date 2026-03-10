@@ -73,7 +73,7 @@
 							</li>
 							<li class="mb-2 text-xl leading-relaxed">
 								<p>
-									Prev. Research Programmer @
+									Prev. Research SWE @
 									<Company
 										href="https://research.sunnybrook.ca/"
 										name="Sunnybrook"
@@ -82,7 +82,7 @@
 								</p>
 							</li>
 							<li class="mb-2 text-xl leading-relaxed">
-								<strong>18×</strong> hackathon winner, <strong>23×</strong> participant
+								<strong>19×</strong> hackathon winner, <strong>24×</strong> participant
 								<ul class="pl-5" style="list-style-type: '▹  ';">
 									<li>
 										<p>
@@ -91,18 +91,6 @@
 												href="https://hackthenorth.com/"
 												name="Hack the North"
 												src="/images/logos/hackthenorth.svg"
-											/>
-										</p>
-									</li>
-									<li>
-										<p>
-											<span>
-												1<span class="align-super text-[0.7em]">st</span> place @
-											</span>
-											<Company
-												href="https://www.jamhacks.ca/"
-												name="JAMHacks"
-												src="/images/logos/jamhacks.png"
 											/>
 										</p>
 									</li>
