@@ -34,7 +34,7 @@ const projects: Project[] = [
 		subTitle: 'Polymarket Track Winner @ NexHacks 2026',
 		oneLiner: 'Bet on anything? Pindex bets on everything.',
 		description:
-			'Agentic dependency analysis for Polymarket. Pindex finds correlated prediction markets that impact your positions, visualizes relationships as interactive D3 graphs, and lets you accept or reject dependencies with impact analysis — all as a floating Chrome extension overlay.',
+			'Agentic dependency analysis for Polymarket. Pindex finds correlated prediction markets that impact your positions, visualizes relationships as interactive graphs, and lets you accept or reject dependencies with impact analysis — all as a floating Chrome extension overlay.',
 		link: 'https://www.pindex.tech',
 		github: 'https://github.com/dtpu/Pindex',
 		tech: ['WXT', 'Hono', 'Cloudflare Workers', 'OpenAI', 'Next.js'],
@@ -93,6 +93,19 @@ const projects: Project[] = [
 		gridSize: '2x1'
 	},
 	{
+		title: 'Copped',
+		subTitle: 'Reactiv Track Winner @ Hack Canada 2026',
+		oneLiner: 'UGC in NFCs.',
+		description:
+			'Pays shoppers to record 15-second video reviews right after purchase. Viewer clips stream via NFC/QR at the exact point of decision; creators earn rewards on publish and conversions, all through an iOS App Clip with no install, no login.',
+		github: 'https://github.com/Tankman61/HackCanada2026',
+		devpost: 'https://devpost.com/software/copped',
+		tech: ['Swift', 'Cloudflare Workers', 'Hono', 'NeonDB', 'PostgreSQL', 'R2'],
+		thumbnail: '/images/projects/copped.gif',
+		video: '/videos/projects/copped.mp4',
+		gridSize: '1x1'
+	},
+	{
 		title: 'Personal Website',
 		description: 'My personal portfolio website. Made with love.',
 		link: 'https://www.danielpu.dev',
@@ -112,19 +125,6 @@ const projects: Project[] = [
 		thumbnail: '/images/projects/suikagame.gif',
 		video: '/videos/projects/suika.mp4',
 		gridSize: '1x2'
-	},
-	{
-		title: 'Copped',
-		subTitle: 'Reactiv Track Winner @ Hack Canada 2026',
-		oneLiner: 'UGC in NFCs.',
-		description:
-			'Pays Canadian shoppers to record 15-second video reviews right after purchase. Viewer clips stream via NFC/QR at the exact point of decision; creator clips earn $5 on publish and another $5 per conversion — all through an iOS App Clip with no login needed.',
-		github: 'https://github.com/Tankman61/HackCanada2026',
-		devpost: 'https://devpost.com/software/copped',
-		tech: ['Swift', 'Cloudflare Workers', 'Hono', 'NeonDB', 'PostgreSQL', 'R2'],
-		thumbnail: '/images/projects/copped.png',
-		video: '/videos/projects/copped.mp4',
-		gridSize: '1x1'
 	},
 	{
 		title: 'IgniteAI',
