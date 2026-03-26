@@ -82,7 +82,7 @@
 								</p>
 							</li>
 							<li class="mb-2 text-xl leading-relaxed">
-								<strong>19×</strong> hackathon winner, <strong>24×</strong> participant
+								<strong>20×</strong> hackathon winner, <strong>25×</strong> participant
 								<ul class="pl-5" style="list-style-type: '▹  ';">
 									<li>
 										<p>

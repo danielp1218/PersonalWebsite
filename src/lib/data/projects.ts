@@ -28,6 +28,19 @@ const projects: Project[] = [
 		video: '/videos/projects/flowboard.mp4',
 		gridSize: '2x1'
 	},
+	{
+		title: 'Agentropolis',
+		subTitle: 'Google Best AI for Community Impact @ GenAI Genesis 2026',
+		oneLiner: 'Simulating toronto with thousands of AI agents.',
+		description: 'We replaced everyone in Toronto with their AI doppelgängers. Agentropolis is a full 3D society simulation running on a real map of Toronto. Thousands of AI agents are seeded from demographics, each with homes, jobs, and personalities. Watch them commute, work, socialize, and react to events in real-time. You can also inject events like transit strikes or heat waves and watch the city adapt.',
+		link: 'https://agentropolis-one.vercel.app/',
+		github: 'https://github.com/Kaibo-Huang/Agentropolis',
+		devpost: 'https://devpost.com/software/agentropolis',
+		tech: ['Next.js', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'MapBox GL', 'WebSockets'],
+		thumbnail: '/images/projects/agentropolis.gif',
+		video: '/videos/projects/agentropolis.mov',
+		gridSize: '2x1'
+	},
 	
 	{
 		title: 'Pindex',
@@ -93,19 +106,6 @@ const projects: Project[] = [
 		gridSize: '2x1'
 	},
 	{
-		title: 'Copped',
-		subTitle: 'Reactiv Track Winner @ Hack Canada 2026',
-		oneLiner: 'UGC in NFCs.',
-		description:
-			'Pays shoppers to record 15-second video reviews right after purchase. Viewer clips stream via NFC/QR at the exact point of decision; creators earn rewards on publish and conversions, all through an iOS App Clip with no install, no login.',
-		github: 'https://github.com/Tankman61/HackCanada2026',
-		devpost: 'https://devpost.com/software/copped',
-		tech: ['Swift', 'Cloudflare Workers', 'Hono', 'NeonDB', 'PostgreSQL', 'R2'],
-		thumbnail: '/images/projects/copped.gif',
-		video: '/videos/projects/copped.mp4',
-		gridSize: '1x1'
-	},
-	{
 		title: 'Personal Website',
 		description: 'My personal portfolio website. Made with love.',
 		link: 'https://www.danielpu.dev',
@@ -149,6 +149,41 @@ const projects: Project[] = [
 		tech: ['WXT', 'FastAPI', 'PyTorch', 'TypeScript', 'React', 'Gemini', 'WebGazer.js'],
 		thumbnail: '/images/projects/websight.gif',
 		fullImage: '/images/projects/websight.png',
+		gridSize: '1x1'
+	},
+	{
+		title: 'Copped',
+		subTitle: 'Reactiv Track Winner @ Hack Canada 2026',
+		oneLiner: 'UGC in NFCs.',
+		description:
+			'Pays shoppers to record 15-second video reviews right after purchase. Viewer clips stream via NFC/QR at the exact point of decision; creators earn rewards on publish and conversions, all through an iOS App Clip with no install, no login.',
+		github: 'https://github.com/Tankman61/HackCanada2026',
+		devpost: 'https://devpost.com/software/copped',
+		tech: ['Swift', 'Cloudflare Workers', 'Hono', 'NeonDB', 'PostgreSQL', 'R2'],
+		thumbnail: '/images/projects/copped.gif',
+		video: '/videos/projects/copped.mp4',
+		gridSize: '1x1'
+	},
+	
+	{
+		title: 'The Pet Sentinel',
+		subTitle: '1st Place - Virtual @ STEMist Hacks III',
+		oneLiner: 'A handy tool to help monitor your pets',
+		description: 'Keeps you connected to your pet at all times, ensuring their safety and your peace of mind. Trained a YOLO model on self-labelled dataset. Used websockets to stream real-time detections to a web-app.',
+		github: 'https://github.com/dtpu/STEMistHacks-3.0',
+		devpost: 'https://devpost.com/software/the-pet-sentinel',
+		tech: ['Python', 'FastAPI', 'OpenCV', 'YOLOv9', 'Pytorch', 'Raspberry Pi', 'Roboflow', 'SvelteKit', 'TypeScript', 'Tailwind', 'Websockets'],
+		thumbnail: '/images/projects/petsentinel.gif',
+		gridSize: '1x2'
+	},
+	{
+		title: 'Pawditor',
+		oneLiner: 'An army of cats to test your website!',
+		description: 'Automated web testing platform using AI agents to simulate real users and attackers. Finds broken flows, UI bugs, security issues, and outputs a JSON/Markdown report with suggested fixes. Fun, memorable UX with cat-themed personas.',
+		github: 'https://github.com/StockerMC/spurhacks2025/',
+		devpost: 'https://devpost.com/software/pawditor',
+		tech: ['SvelteKit', 'TypeScript', 'Playwright', 'Gemini', 'ElysiaJS', 'Docker', 'Supabase', 'Google Cloud'],
+		thumbnail: '/images/projects/pawditor.jpg',
 		gridSize: '2x1'
 	},
 	{
@@ -161,27 +196,6 @@ const projects: Project[] = [
 		video: '/videos/projects/minesweeper.mp4',
 		gridSize: '1x1'
 	},
-	{
-		title: 'The Pet Sentinel',
-		subTitle: '1st Place - Virtual @ STEMist Hacks III',
-		oneLiner: 'A handy tool to help monitor your pets',
-		description: 'Keeps you connected to your pet at all times, ensuring their safety and your peace of mind. Trained a YOLO model on self-labelled dataset. Used websockets to stream real-time detections to a web-app.',
-		github: 'https://github.com/dtpu/STEMistHacks-3.0',
-		devpost: 'https://devpost.com/software/the-pet-sentinel',
-		tech: ['Python', 'FastAPI', 'OpenCV', 'YOLOv9', 'Pytorch', 'Raspberry Pi', 'Roboflow', 'SvelteKit', 'TypeScript', 'Tailwind', 'Websockets'],
-		thumbnail: '/images/projects/petsentinel.gif',
-		gridSize: '1x1'
-	},
-	{
-		title: 'Pawditor',
-		oneLiner: 'An army of cats to test your website!',
-		description: 'Automated web testing platform using AI agents to simulate real users and attackers. Finds broken flows, UI bugs, security issues, and outputs a JSON/Markdown report with suggested fixes. Fun, memorable UX with cat-themed personas.',
-		github: 'https://github.com/StockerMC/spurhacks2025/',
-		devpost: 'https://devpost.com/software/pawditor',
-		tech: ['SvelteKit', 'TypeScript', 'Playwright', 'Gemini', 'ElysiaJS', 'Docker', 'Supabase', 'Google Cloud'],
-		thumbnail: '/images/projects/pawditor.jpg',
-		gridSize: '2x1'
-	}
 ];
 
 export { projects };
