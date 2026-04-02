@@ -1,5 +1,6 @@
 import { put } from '@vercel/blob';
 import { dev } from '$app/environment';
+import { BLOB_READ_WRITE_TOKEN } from '$env/static/private';
 
 const relativeImagePath =
 	'/api/pixel-profile/github-stats?dithering=true&include_all_commits=true&pixelate_avatar=false&theme=fuji&color=%23ffffffFF&hide=issues';
@@ -33,7 +34,8 @@ const uploadToBlob = async (imageFile: ArrayBuffer) => {
 		const { url } = await put('dtpu/github-stats.png', imageFile, {
 			access: 'public',
 			cacheControlMaxAge: 86400, // 1 day in seconds
-			allowOverwrite: true
+			allowOverwrite: true,
+			token: BLOB_READ_WRITE_TOKEN
 		});
 		return new Response(
 			'Cron job executed: GitHub stats image uploaded to Vercel Blob Storage at ' + url,
