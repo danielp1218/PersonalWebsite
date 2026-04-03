@@ -1,4 +1,3 @@
-import { dev } from '$app/environment';
 import { BLOB_READ_WRITE_TOKEN } from '$env/static/private';
 
 const imageURL =
@@ -6,8 +5,7 @@ const imageURL =
 
 const RETRIES = 4;
 
-export const GET = async (req) => {
-	const fullURL = new URL(req.url);
+export const GET = async () => {
 	for (let attempt = 1; attempt <= RETRIES; attempt++) {
 		try {
 			const res = await fetch(`${imageURL}`);
