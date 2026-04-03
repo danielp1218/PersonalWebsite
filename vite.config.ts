@@ -6,7 +6,7 @@ export default defineConfig({
 	plugins: [tailwindcss(), sveltekit()],
 	ssr: {
 		noExternal: ['@vercel/blob'],
-		external: ['@resvg/resvg-wasm']
+		external: ['@resvg/resvg-wasm', 'pixel-profile']
 	},
 	optimizeDeps: {
 		exclude: ['@resvg/resvg-wasm']
