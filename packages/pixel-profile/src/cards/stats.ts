@@ -20,8 +20,20 @@ import {
 import { getPngBufferFromURL } from '../utils/converter';
 import { filterNotEmpty } from '../utils/filter';
 import { fontBuffer } from './PressStart2P-Regular';
-import { Resvg } from '@resvg/resvg-js';
+import { Resvg, initWasm } from '@resvg/resvg-wasm';
+import { readFile } from 'node:fs/promises';
+import { createRequire } from 'node:module';
 import satori from 'satori';
+
+const _require = createRequire(import.meta.url);
+const wasmPath = _require.resolve('@resvg/resvg-wasm/index_bg.wasm');
+let initPromise: Promise<void> | null = null;
+function ensureWasmInitialized() {
+	if (!initPromise) {
+		initPromise = readFile(wasmPath).then(buf => initWasm(buf));
+	}
+	return initPromise;
+}
 
 export type Stats = {
 	name: string;
@@ -158,8 +170,9 @@ export async function renderStats(stats: Stats, options: Options = {}): Promise<
 		}
 	} as const;
 
+	await ensureWasmInitialized();
 	const pngData = new Resvg(svg, opts).render();
-	const pngBuffer = pngData.asPng();
+	const pngBuffer = Buffer.from(pngData.asPng());
 
 	let { pixels } = await getPixelsFromPngBuffer(pngBuffer);
 

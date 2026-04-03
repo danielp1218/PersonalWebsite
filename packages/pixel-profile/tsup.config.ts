@@ -8,7 +8,7 @@ export default defineConfig({
 	dts: true,
 	minify: true,
 	format: ['esm'],
-	external: ['@resvg/resvg-js'],
+	external: ['@resvg/resvg-wasm'],
 	esbuildOptions(options) {
 		options.tsconfig = 'tsconfig.json';
 		options.legalComments = 'external';

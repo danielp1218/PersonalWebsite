@@ -6,9 +6,9 @@ export default defineConfig({
 	plugins: [tailwindcss(), sveltekit()],
 	ssr: {
 		noExternal: ['@vercel/blob'],
-		external: ['@resvg/resvg-js']
+		external: ['@resvg/resvg-wasm']
 	},
 	optimizeDeps: {
-		exclude: ['@resvg/resvg-js']
+		exclude: ['@resvg/resvg-wasm']
 	}
 });
