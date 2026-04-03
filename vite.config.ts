@@ -5,7 +5,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
 	plugins: [tailwindcss(), sveltekit()],
 	ssr: {
-		noExternal: [],
+		noExternal: ['@vercel/blob'],
 		external: ['@resvg/resvg-js']
 	},
 	optimizeDeps: {
