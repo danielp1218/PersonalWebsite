@@ -1,4 +1,3 @@
-import { put } from '@vercel/blob';
 import { dev } from '$app/environment';
 import { BLOB_READ_WRITE_TOKEN } from '$env/static/private';
 
@@ -31,12 +30,23 @@ export const GET = async (req) => {
 // Note: url is uploaded to https://yzm0cfbfopzjsgx7.public.blob.vercel-storage.com/dtpu/github-stats.png
 const uploadToBlob = async (imageFile: ArrayBuffer) => {
 	try {
-		const { url } = await put('dtpu/github-stats.png', imageFile, {
-			access: 'public',
-			cacheControlMaxAge: 86400, // 1 day in seconds
-			allowOverwrite: true,
-			token: BLOB_READ_WRITE_TOKEN
+		const response = await fetch('https://blob.vercel-storage.com/dtpu/github-stats.png', {
+			method: 'PUT',
+			body: imageFile,
+			headers: {
+				authorization: `Bearer ${BLOB_READ_WRITE_TOKEN}`,
+				'x-api-version': '7',
+				'x-cache-control-max-age': '86400',
+				'x-content-type': 'image/png',
+				'x-allow-overwrite': '1',
+				'x-add-random-suffix': '0'
+			}
 		});
+		if (!response.ok) {
+			const text = await response.text();
+			throw new Error(`Blob API returned ${response.status}: ${text}`);
+		}
+		const { url } = (await response.json()) as { url: string };
 		return new Response(
 			'Cron job executed: GitHub stats image uploaded to Vercel Blob Storage at ' + url,
 			{ status: 200 }

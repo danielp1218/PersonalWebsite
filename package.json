@@ -33,16 +33,15 @@
 	"dependencies": {
 		"@resvg/resvg-js": "^2.6.2",
 		"@vercel/analytics": "^1.6.1",
-		"@vercel/blob": "^2.0.0",
 		"pixel-profile": "workspace:*",
 		"pixel-profile-server": "workspace:*"
 	},
 	"private": true,
 	"scripts": {
 		"dev": "bun run --bun vite dev",
-		"build": "bun run build:packages && bun run --bun vite build",
+		"build": "bun run build:packages && bun run build:website",
 		"build:packages": "bun run --cwd packages/pixel-profile build && bun run --cwd packages/pixel-profile-server build",
-		"build:website": "vite build",
+		"build:website": "bun run --bun vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
