@@ -25,7 +25,7 @@ import { readFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import satori from 'satori';
 
-const _require = createRequire(import.meta.url);
+const _require = createRequire(process.cwd() + '/package.json');
 const wasmPath = _require.resolve('@resvg/resvg-wasm/index_bg.wasm');
 let initPromise: Promise<void> | null = null;
 function ensureWasmInitialized() {
