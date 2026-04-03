@@ -5,6 +5,7 @@
     "": {
       "name": "personalwebsite",
       "dependencies": {
+        "@resvg/resvg-wasm": "^2.6.2",
         "@vercel/analytics": "^1.6.1",
         "pixel-profile": "workspace:*",
         "pixel-profile-server": "workspace:*",
