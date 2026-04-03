@@ -5,9 +5,6 @@
 		"type": "git",
 		"url": "https://github.com/dtpu/danielpu.dev.git"
 	},
-	"workspaces": [
-		"packages/**"
-	],
 	"devDependencies": {
 		"@eslint/compat": "^1.4.1",
 		"@eslint/js": "^9.39.2",
@@ -31,17 +28,12 @@
 		"vite": "^6.4.1"
 	},
 	"dependencies": {
-		"@resvg/resvg-wasm": "^2.6.2",
-		"@vercel/analytics": "^1.6.1",
-		"pixel-profile": "workspace:*",
-		"pixel-profile-server": "workspace:*"
+		"@vercel/analytics": "^1.6.1"
 	},
 	"private": true,
 	"scripts": {
 		"dev": "bun run --bun vite dev",
-		"build": "bun run build:packages && bun run build:website",
-		"build:packages": "bun run --cwd packages/pixel-profile build && bun run --cwd packages/pixel-profile-server build",
-		"build:website": "bun run --bun vite build",
+		"build": "bun run --bun vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

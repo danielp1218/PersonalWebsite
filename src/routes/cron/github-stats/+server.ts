@@ -1,14 +1,13 @@
 import { dev } from '$app/environment';
 import { BLOB_READ_WRITE_TOKEN } from '$env/static/private';
 
-const relativeImagePath =
-	'/api/pixel-profile/github-stats?dithering=true&include_all_commits=true&pixelate_avatar=false&theme=fuji&color=%23ffffffFF&hide=issues';
+const imageURL =
+	'https://pixel-profile.vercel.app/api/github-stats?username=dtpu&dithering=true&include_all_commits=true&pixelate_avatar=false&theme=fuji&color=%23ffffffFF&hide=issues';
 
 const RETRIES = 4;
 
 export const GET = async (req) => {
 	const fullURL = new URL(req.url);
-	const imageURL = `${dev ? fullURL.origin : 'https://danielpu.dev'}${relativeImagePath}`;
 	for (let attempt = 1; attempt <= RETRIES; attempt++) {
 		try {
 			const res = await fetch(`${imageURL}`);
