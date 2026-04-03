@@ -5,6 +5,5 @@
 			"path": "/cron/github-stats",
 			"schedule": "0 0 * * *"
 		}
-	],
-	"bunVersion": "1.x"
+	]
 }
