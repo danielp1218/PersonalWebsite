@@ -28,7 +28,7 @@
 				></div>
 			</span>
 			<h3 class="text-secondary/80 text-base italic md:text-lg">
-				CS @ UWaterloo, incoming SWE @ Slash
+				CS @ UWaterloo, SWE @ Slash
 			</h3>
 		</div>
 		<Contacts />
