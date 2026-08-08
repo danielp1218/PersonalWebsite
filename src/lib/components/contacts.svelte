@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Github from '$lib/components/icons/github.svelte';
 	import Linkedin from '$lib/components/icons/linkedin.svelte';
+	import X from '$lib/components/icons/x.svelte';
 	import Email from '$lib/components/icons/email.svelte';
 </script>
 
@@ -22,6 +23,15 @@
 		aria-label="LinkedIn"
 	>
 		<Linkedin class="h-6 w-6" />
+	</a>
+	<a
+		href="https://x.com/daneilp_"
+		target="_blank"
+		rel="noopener noreferrer"
+		class="contact-link text-primary hover:text-secondary"
+		aria-label="X"
+	>
+		<X class="h-6 w-6" />
 	</a>
 	<a
 		href="mailto:dtpu@uwaterloo.ca"
