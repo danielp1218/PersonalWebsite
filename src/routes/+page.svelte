@@ -27,9 +27,7 @@
 					class="from-secondary/0 via-secondary/40 to-secondary/0 h-px w-32 bg-linear-to-r"
 				></div>
 			</span>
-			<h3 class="text-secondary/80 text-base italic md:text-lg">
-				CS @ UWaterloo, SWE @ Slash
-			</h3>
+			<h3 class="text-secondary/80 text-base italic md:text-lg">CS @ UWaterloo, SWE @ Slash</h3>
 		</div>
 		<Contacts />
 	</div>
@@ -63,7 +61,17 @@
 						<AnimatedList style="list-style-type: '➢  ';">
 							<li class="mt-4 mb-2 text-xl leading-relaxed">
 								<p>
-									Bachelor of Computer Science @
+									Engineering @
+									<Company
+										href="https://www.slash.com/"
+										name="Slash"
+										src="/images/logos/slash.webp"
+									/>
+								</p>
+							</li>
+							<li class="mb-2 text-xl leading-relaxed">
+								<p>
+									Studying Computer Science @
 									<Company
 										href="https://uwaterloo.ca/"
 										name="UWaterloo"
@@ -82,7 +90,7 @@
 								</p>
 							</li>
 							<li class="mb-2 text-xl leading-relaxed">
-								<strong>20×</strong> hackathon winner, <strong>25×</strong> participant
+								<strong>20×</strong> hackathon winner, <strong>26×</strong> participant
 								<ul class="pl-5" style="list-style-type: '▹  ';">
 									<li>
 										<p>
@@ -96,7 +104,7 @@
 									</li>
 									<li>
 										<p>
-											Organizing
+											Organized
 											<Company
 												href="https://cxc.uwdatascience.ca"
 												name="CxC"
@@ -113,8 +121,8 @@
 								</ul>
 							</li>
 							<li class="mb-2 text-xl leading-relaxed">
-								I find <strong>backend</strong>, <strong>systems</strong>, <strong>AI/ML</strong>,
-								and emerging tech really cool!
+								I find <strong>backend infrastructure</strong>, <strong>AI agents</strong>, and
+								emerging tech really cool!
 							</li>
 							<li class="mb-2 text-xl leading-relaxed">
 								In my free time, you can find me playing badminton, working on cool projects, or
